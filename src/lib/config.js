@@ -1,13 +1,13 @@
 export const PHONE = '13784884521';
 export const PHONE_DISPLAY = '137-8488-4521';
-export const DOUYIN_URL = 'https://www.douyin.com/user/MS4wLjABAAAA2PS3ECmkLtZ-51_vfuMWGtJWC1s-SEjnNBD73HkU8sQlkCwg2pDkASv1rolMt9Xv?from_tab_name=main';
+export const DOUYIN_URL = 'https://www.douyin.com/user/MS4wLjABAAAAvm4675WrByGA48-Jjs0IMBvTvcE6clOozEzRYH8ENsE?from_tab_name=main';
 
 export const douyinProfile = {
-  accountName: '门壹修（枣强县）',
-  douyinId: '61328051217',
-  works: '39+',
-  fans: '200+',
-  likes: '900+',
+  accountName: '枣强门壹修',
+  douyinId: '78035798381',
+  works: '90+',
+  fans: '1400+',
+  likes: '3300+',
 };
 
 export const douyinTopics = [
