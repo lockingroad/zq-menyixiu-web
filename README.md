@@ -1,54 +1,119 @@
-# 枣强卷帘门维修服务网站 (za-menyixiu-web)
+# 枣强卷帘门维修服务网站
 
-这是一个使用 React + Vite 构建的本地化服务展示网站。主要用于承载“枣强门壹修”相关的卷帘门维修服务信息，并针对百度、谷歌以及 AI 搜索引擎进行了 SEO 优化。
+“枣强门壹修”本地服务展示站，基于 Next.js 构建。网站用于承载卷帘门、伸缩门、道闸杆、防盗门等安装维修服务信息，并补充常见故障知识库与抖音公开案例内容。
 
-## 🛠️ 技术栈
+## 技术栈
 
-- 框架：[React 19](https://react.dev/) + [Vite](https://vitejs.dev/)
-- 样式：原生 CSS (移动端优先设计，全面响应式)
-- 部署：已预配 `vercel.json`，可无缝部署至 Vercel
+- Next.js 16
+- React 19
+- 原生 CSS
+- Markdown 内容源：`gray-matter` + `remark`
 
-## 📂 项目结构
+## 本地开发
 
-```text
-├── index.html        # 入口文件（包含所有 SEO meta 标签和 JSON-LD 数据）
-├── src/
-│   ├── main.jsx      # React 初始化代码
-│   ├── App.jsx       # 核心单页组件（包含 Header、Hero、Services、Knowledge、Trust、Footer）
-│   └── index.css     # 全局样式控制与设计系统CSS变量
-├── public/           # 静态资源存放目录 (图片、SEO图标等)
-└── vercel.json       # Vercel 部署配置（SPA 路由重写）
-```
-
-## ⚠️ 本地运行须知（必看）
-
-由于当前所在的特定 macOS 目录权限具有极其严格的 SIP (System Integrity Protection) 限制或沙盒挂载限制，这导致 **npm 直接在这里安装依赖（创建嵌套的 `node_modules` 文件夹）时会报 `EPERM` 或 `Operation not permitted` 错误**，所以您在项目根目录运行 `npm run dev` 会提示 `sh: vite: command not found`。
-
-### 替代方案：在 `/tmp` 目录中运行 (仅针对本地测试)
-
-为了绕过该系统权限问题进行本地预览，您可以将本项目代码拷贝到 `/tmp` 临时目录下运行：
+安装依赖：
 
 ```bash
-# 1. 拷贝代码到不受限制的 /tmp 目录
-cp -r /Users/zhihu/project/template/frp-go/dev/za-menyixiu-web /tmp/za-menyixiu-web-dev
-cd /tmp/za-menyixiu-web-dev
-
-# 2. 安装依赖并启动开发服务器
 npm install
+```
+
+启动开发环境：
+
+```bash
 npm run dev
 ```
 
-> **注意：部署到生产环境（如 Vercel, Netlify）由于它们提供干净的云端构建容器，不受此本地系统的限制影响，直接关联 GitHub 仓库即可自动构建部署。**
+默认访问地址：
 
-## 🚀 部署到 Vercel
+```text
+http://localhost:3000
+```
 
-1. 将此项目推送到你的 GitHub 仓库中。
-2. 登录 [Vercel](https://vercel.com/) 并点击 **Add New... > Project**。
-3. 导入您刚刚推送的 GitHub 仓库。
-4. Vercel 会自动识别出 Vite 框架，无需修改配置，直接点击 **Deploy**。
-5. 等待部署完成，即可获得在公网访问的链接，之后你可以绑定你的自定义域名。
+构建生产版本：
 
-## 📝 内容修改指南
+```bash
+npm run build
+```
 
-如果你需要修改网站内的文字、价格或是文章，可以直接编辑 `src/App.jsx`。
-所有内容（如手机号 `PHONE`，主营服务数组 `services` 和文章列表 `articles`）都定义在文件顶部的静态数据区域，非常易于修改。
+本地预览生产版本：
+
+```bash
+npm run start
+```
+
+## 项目结构
+
+```text
+.
+├── content/
+│   └── faq/                  # FAQ Markdown 内容
+├── public/
+│   ├── images/               # 站点图片素材
+│   ├── robots.txt
+│   └── sitemap.xml
+├── src/
+│   ├── app/
+│   │   ├── faq/
+│   │   │   ├── [slug]/page.js
+│   │   │   └── page.js
+│   │   ├── layout.js
+│   │   └── page.js           # 首页
+│   ├── components/           # Header / Footer / 回顶等公共组件
+│   ├── lib/
+│   │   ├── config.js         # 电话、服务项、抖音信息、案例配置
+│   │   └── markdown.js       # FAQ 读取与渲染
+│   └── index.css             # 全局样式与设计 token
+├── next.config.js
+├── package.json
+└── README.md
+```
+
+## 内容维护
+
+### 1. 修改首页和服务信息
+
+以下内容主要在 `src/lib/config.js` 维护：
+
+- 联系电话
+- 抖音主页链接
+- 抖音账号信息
+- 主营服务项
+- 首页“近期真实维修案例”
+
+首页结构本身位于 `src/app/page.js`。
+
+### 2. 修改 FAQ 知识库
+
+FAQ 内容来自 `content/faq/*.md`。每篇文章使用 Markdown 编写，并通过 `src/lib/markdown.js` 读取。
+
+新增 FAQ 的基本步骤：
+
+1. 在 `content/faq/` 下新增一个 `.md` 文件。
+2. 补充 frontmatter，例如 `title`、`date`、`tag`、`excerpt`、`readTime`。
+3. 文件名会作为文章的 `slug`，自动生成详情页路由。
+
+### 3. 修改站点样式
+
+全局配色、按钮、卡片、响应式布局等都在 `src/index.css` 中维护。
+
+## 页面说明
+
+- `/`：首页，包含服务介绍、真实案例、FAQ 摘要、抖音信息
+- `/faq`：FAQ 列表页
+- `/faq/[slug]`：FAQ 详情页
+
+## 部署
+
+这是标准 Next.js 项目，可直接部署到 Vercel 或其他支持 Node.js 的平台。
+
+Vercel 常规流程：
+
+1. 推送到 Git 仓库。
+2. 在 Vercel 导入仓库。
+3. 使用默认 Next.js 构建配置即可完成部署。
+
+## 当前内容特点
+
+- 首页文案已经按枣强本地维修场景做过收敛
+- 抖音信息区使用公开主页内容整理，不再使用搜索页跳转
+- Footer 与按钮已去掉不稳定的深色背景 emoji 表现
