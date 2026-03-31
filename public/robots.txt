@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zaq-menyixiu.vercel.app/sitemap.xml
+Sitemap: https://menyixiu.cn/sitemap.xml
