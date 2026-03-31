@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://zaq-menyixiu.vercel.app/</loc>
-    <lastmod>2024-12-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://zaq-menyixiu.vercel.app/faq</loc>
-    <lastmod>2024-12-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://zaq-menyixiu.vercel.app/faq/door-stuck</loc>
-    <lastmod>2024-12-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://zaq-menyixiu.vercel.app/faq/remote-failure</loc>
-    <lastmod>2024-12-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://zaq-menyixiu.vercel.app/faq/motor-humming</loc>
-    <lastmod>2024-11-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://zaq-menyixiu.vercel.app/faq/spring-broken</loc>
-    <lastmod>2024-11-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://zaq-menyixiu.vercel.app/faq/auto-rebound</loc>
-    <lastmod>2024-11-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://zaq-menyixiu.vercel.app/faq/rail-rust</loc>
-    <lastmod>2024-11-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>https://menyixiu.cn/</loc>
+  <lastmod>2026-03-31T13:02:02+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://menyixiu.cn/faq/door-stuck</loc>
+  <lastmod>2026-03-31T13:02:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://menyixiu.cn/faq/remote-failure</loc>
+  <lastmod>2026-03-31T13:02:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://menyixiu.cn/faq/motor-humming</loc>
+  <lastmod>2026-03-31T13:02:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://menyixiu.cn/faq/spring-broken</loc>
+  <lastmod>2026-03-31T13:02:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://menyixiu.cn/faq/auto-rebound</loc>
+  <lastmod>2026-03-31T13:02:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://menyixiu.cn/faq/rail-rust</loc>
+  <lastmod>2026-03-31T13:02:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://menyixiu.cn/faq</loc>
+  <lastmod>2026-03-31T13:02:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
 </urlset>
