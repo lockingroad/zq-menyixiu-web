@@ -12,7 +12,7 @@ export const metadata = {
     icon: '/images/logo.jpg',
   },
   other: {
-    'baidu-site-verification': 'codeva-g95099ULw3',
+    'baidu-site-verification': 'codeva-aJGTvIXgvj',
   },
 };
 
