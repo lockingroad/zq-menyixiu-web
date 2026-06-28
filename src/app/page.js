@@ -33,7 +33,7 @@ export default function Home() {
           <h1>枣强专业卷帘门维修<br />解决各种疑难杂症</h1>
           <p className="hero-subtitle">
             快速上门，价格透明，不修不收费。<br />
-            卷帘门 · 伸缩门 · 道闸杆 — 一站式服务。
+            卷帘门 · 防盗门 · 门禁道闸 · 智能锁 — 一站式服务。
           </p>
           <div className="hero-cta-group">
             <a href={`tel:${PHONE}`} className="btn-hero-primary" id="hero-call-btn">
@@ -66,7 +66,7 @@ export default function Home() {
           <h2 className="section-title">主营服务</h2>
           <div className="section-divider" />
           <p className="section-subtitle">
-            家庭、企业、学校各类门一站式服务
+            卷帘门、防盗门、门禁道闸、智能锁、人脸识别 — 家庭、企业、门市、小区、农村各类场景
           </p>
           <div className="services-grid">
             {services.map((s, i) => (
