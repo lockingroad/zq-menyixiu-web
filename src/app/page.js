@@ -5,13 +5,14 @@ import {
   DOUYIN_URL,
   douyinProfile,
   douyinTopics,
-  featuredCases,
+  repairCases,
   services,
 } from '@/lib/config';
 import { getSortedPostsData } from '@/lib/markdown';
 
 export default function Home() {
   const allPostsData = getSortedPostsData().slice(0, 6);
+  const recentCases = repairCases.slice(0, 12);
 
   return (
     <>
@@ -87,13 +88,16 @@ export default function Home() {
           <h2 className="section-title">近期真实维修案例</h2>
           <div className="section-divider" />
           <p className="section-subtitle">
-            以下内容根据抖音公开作品整理，尽量还原枣强本地客户最常见、最关心的门类问题。
+            枣强本地真实上门维修记录，持续更新（以下为近期待修记录，更多案例陆续整理）
           </p>
           <div className="case-feed-grid">
-            {featuredCases.map((item) => (
-              <article className="case-feed-card" key={item.title}>
+            {recentCases.map((item) => (
+              <article className="case-feed-card" key={`${item.date}-${item.location}`}>
                 <span className="case-feed-tag">{item.tag}</span>
                 <h3>{item.title}</h3>
+                <div style={{ fontSize: '13px', color: 'var(--color-text-secondary)', marginBottom: '10px' }}>
+                  📍 {item.location} · 📅 {item.date}
+                </div>
                 <p>{item.desc}</p>
               </article>
             ))}

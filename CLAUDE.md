@@ -19,7 +19,7 @@ npm run start    # 运行生产构建
 
 ## 架构
 
-**内容即数据，不是代码。** 频繁变更的站点文案集中在 `src/lib/config.js`：电话号码、抖音主页、`services`、`featuredCases`、`serviceAreas`、FAQ 主题简介。首页 `src/app/page.js` 直接从这些导出渲染。修改业务信息 = 改 `config.js`，通常不动 JSX。
+**内容即数据，不是代码。** 频繁变更的站点文案集中在 `src/lib/config.js`：电话号码、抖音主页、`services`、`repairCases`、`serviceAreas`、FAQ 主题简介。首页 `src/app/page.js` 直接从这些导出渲染。修改业务信息 = 改 `config.js`，通常不动 JSX。
 
 **Markdown FAQ 系统。** `content/faq/*.md` 每个文件即一篇文章。**文件名（去掉 `.md`）即 slug**，决定路由 `/faq/[slug]`。模板用到的 frontmatter 字段：`title`、`date`（YYYY-MM-DD，同时作为排序依据，新→旧）、`tag`、`excerpt`、`readTime`。`src/lib/markdown.js` 用 `fs`/`gray-matter` 读取，再用 `remark`+`remark-html` 把正文渲染成 HTML。新增 FAQ：在 `content/faq/` 放一个 `.md` 并补全 frontmatter 即可，无需注册路由——`generateStaticParams` 会自动发现。这些是服务端组件，在构建/请求时读取文件系统。
 
