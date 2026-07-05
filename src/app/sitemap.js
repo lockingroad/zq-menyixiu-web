@@ -8,6 +8,7 @@ export default function sitemap() {
   const staticRoutes = [
     { url: '/', priority: 1.0, changeFrequency: 'weekly' },
     { url: '/faq', priority: 0.8, changeFrequency: 'weekly' },
+    { url: '/cases', priority: 0.8, changeFrequency: 'weekly' },
   ];
 
   const faqRoutes = getSortedPostsData().map((post) => ({

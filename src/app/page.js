@@ -103,6 +103,14 @@ export default function Home() {
             ))}
           </div>
           <div className="case-feed-cta">
+            {/* 站内完整案例列表 + 抖音视频案例，两个入口并列保留 */}
+            <Link
+              href="/cases"
+              className="btn-hero-secondary"
+              style={{ color: 'var(--color-primary)', borderColor: 'var(--color-primary)', marginRight: '12px' }}
+            >
+              查看更多案例 →
+            </Link>
             <a
               href={DOUYIN_URL}
               target="_blank"
