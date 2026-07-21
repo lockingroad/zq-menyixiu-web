@@ -10,6 +10,13 @@ import {
 } from '@/lib/config';
 import { getSortedPostsData } from '@/lib/markdown';
 
+// 首页规范链接，仅指向自身，不污染子路由
+export const metadata = {
+  alternates: {
+    canonical: '/',
+  },
+};
+
 export default function Home() {
   const allPostsData = getSortedPostsData().slice(0, 6);
   const recentCases = repairCases.slice(0, 12);

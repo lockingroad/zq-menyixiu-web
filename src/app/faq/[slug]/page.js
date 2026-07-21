@@ -15,6 +15,10 @@ export async function generateMetadata({ params }) {
   return {
     title: `${postData.title} - 枣强卷帘门维修`,
     description: postData.excerpt,
+    // 每篇 FAQ 的规范链接指向自身，便于 Google 独立收录
+    alternates: {
+      canonical: `/faq/${slug}`,
+    },
   };
 }
 
