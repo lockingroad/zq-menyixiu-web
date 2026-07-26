@@ -38,12 +38,17 @@ const localBusinessJsonLd = {
   '@type': 'LocalBusiness',
   '@id': `${SITE_URL}/#business`,
   name: '枣强门壹修',
-  alternateName: '枣强卷帘门维修',
-  description: '枣强本地卷帘门、工业卷帘门、肯德基门、防盗门、智能锁、小区门禁、磁吸锁、人脸识别、自抬杆、车牌识别、农村自建房大门等安装维修上门服务，从业20年，县城内15分钟快速达。',
+  alternateName: ['枣强卷帘门维修', '门壹修'],
+  description:
+    '枣强门壹修提供卷帘门、车库门、工业卷帘门、伸缩门、道闸、防盗门、智能锁、小区门禁等上门安装维修。刘金灿师傅从业20年，电话13784884521，县城内约15分钟达，价格透明、不修不收费。',
+  slogan: '枣强本地上门维修，县城内约15分钟达',
   telephone: PHONE,
   url: SITE_URL,
   image: `${SITE_URL}/images/logo.jpg`,
+  logo: `${SITE_URL}/images/logo.jpg`,
   priceRange: '$$',
+  currenciesAccepted: 'CNY',
+  paymentAccepted: 'Cash, WeChat Pay, Alipay',
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
@@ -58,6 +63,35 @@ const localBusinessJsonLd = {
   },
   areaServed: serviceAreas.map((area) => ({ '@type': 'City', name: area })),
   knowsAbout: services.map((s) => s.title),
+  // 服务清单，便于 AI 识别可提供的上门项目
+  makesOffer: services.map((s) => ({
+    '@type': 'Offer',
+    itemOffered: {
+      '@type': 'Service',
+      name: s.title,
+      description: s.desc,
+      areaServed: '河北省衡水市枣强县',
+      provider: { '@id': `${SITE_URL}/#business` },
+    },
+  })),
+  founder: {
+    '@type': 'Person',
+    name: '刘金灿',
+    jobTitle: '门类安装维修技师',
+  },
+  employee: {
+    '@type': 'Person',
+    name: '刘金灿',
+    jobTitle: '门类安装维修技师',
+    telephone: PHONE,
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: PHONE,
+    contactType: 'customer service',
+    areaServed: 'CN-HE',
+    availableLanguage: 'Chinese',
+  },
   sameAs: [DOUYIN_URL],
 };
 

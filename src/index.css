@@ -390,6 +390,93 @@ button {
   line-height: 1.8;
 }
 
+/* GEO 直答 / NAP 块：便于 AI 与用户快速摘录关键信息 */
+.geo-answer-box {
+  max-width: 640px;
+  margin: 0 auto var(--space-6);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-xl);
+  text-align: left;
+  line-height: 1.7;
+}
+
+.hero-geo-answer {
+  background: rgba(0, 0, 0, 0.42);
+  border: 1px solid rgba(255, 244, 226, 0.28);
+  backdrop-filter: blur(10px);
+  color: rgba(255, 247, 235, 0.95);
+}
+
+.geo-answer-box--light {
+  background: var(--color-primary-50, #eef6f1);
+  border: 1px solid var(--color-primary-100, #d5e8dc);
+  color: var(--color-text);
+  margin-bottom: var(--space-8);
+}
+
+.geo-answer-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0 0 8px;
+}
+
+.geo-answer-lead {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.hero-geo-answer .geo-answer-lead {
+  font-size: 15px;
+  color: rgba(255, 247, 235, 0.96);
+}
+
+.geo-answer-meta {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.88;
+}
+
+.geo-answer-phone {
+  font-weight: 800;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.geo-answer-box--light .geo-answer-phone {
+  color: var(--color-primary);
+}
+
+.geo-nap-card {
+  margin-top: 60px;
+  padding: 32px;
+  background-color: var(--color-primary-50);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-primary-100);
+  text-align: center;
+}
+
+.geo-nap-card h3 {
+  color: var(--color-primary);
+  margin-bottom: 16px;
+}
+
+.geo-nap-line {
+  margin: 0 0 10px;
+  color: var(--color-text);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.geo-nap-note {
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
 .hero-cta-group {
   display: flex;
   flex-direction: column;
@@ -596,6 +683,242 @@ button {
 .case-feed-cta {
   margin-top: var(--space-8);
   text-align: center;
+}
+
+/* ============================================
+   Cases page — 按小区导航布局
+   ============================================ */
+.cases-breadcrumb {
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.cases-breadcrumb a {
+  color: var(--color-primary);
+}
+
+.cases-page-header {
+  margin-bottom: var(--space-6);
+}
+
+.cases-page-intro {
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 720px;
+}
+
+.cases-page-intro a {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.cases-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  align-items: stretch;
+}
+
+/* 手机端：顶部横向地点页签 */
+.cases-nav {
+  position: sticky;
+  top: 72px;
+  z-index: 20;
+  margin: 0 calc(-1 * var(--space-4, 1rem));
+  padding: 0 var(--space-4, 1rem);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 252, 247, 0.98) 70%,
+    rgba(255, 252, 247, 0.85)
+  );
+  border-bottom: 1px solid rgba(169, 123, 63, 0.12);
+}
+
+.cases-nav-inner {
+  padding: 10px 0 12px;
+}
+
+.cases-nav-title {
+  display: none;
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.04em;
+}
+
+.cases-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  padding-bottom: 4px;
+}
+
+.cases-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding: 8px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(169, 123, 63, 0.2);
+  background: rgba(255, 252, 246, 0.96);
+  color: var(--color-primary-dark);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+
+.cases-nav-link:hover {
+  border-color: var(--color-primary);
+  background: rgba(53, 82, 74, 0.08);
+  color: var(--color-primary);
+}
+
+.cases-nav-count {
+  display: inline-flex;
+  min-width: 1.25rem;
+  justify-content: center;
+  padding: 0 6px;
+  border-radius: var(--radius-full);
+  background: rgba(53, 82, 74, 0.1);
+  color: var(--color-primary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.cases-main {
+  min-width: 0;
+}
+
+.cases-group {
+  scroll-margin-top: 140px;
+  margin-bottom: var(--space-10);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px dashed rgba(169, 123, 63, 0.18);
+}
+
+.cases-group:last-of-type {
+  border-bottom: none;
+}
+
+.cases-group-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: var(--space-4);
+}
+
+.cases-group-title {
+  margin: 0;
+  font-size: var(--font-size-xl, 1.35rem);
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  line-height: 1.35;
+}
+
+.cases-group-sub {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.cases-group-badge {
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(53, 82, 74, 0.08);
+  color: var(--color-primary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.cases-card-meta {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-bottom: 10px;
+}
+
+/* 平板及以上：左侧固定导航 + 右侧内容 */
+@media (min-width: 768px) {
+  .cases-layout {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-8);
+  }
+
+  .cases-nav {
+    position: sticky;
+    top: 96px;
+    z-index: 10;
+    width: 220px;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border-bottom: none;
+  }
+
+  .cases-nav-inner {
+    padding: 16px;
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(169, 123, 63, 0.16);
+    background: rgba(255, 252, 246, 0.96);
+    box-shadow: var(--shadow-card);
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+
+  .cases-nav-title {
+    display: block;
+  }
+
+  .cases-nav-list {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    overflow-x: visible;
+    gap: 4px;
+    padding-bottom: 0;
+  }
+
+  .cases-nav-link {
+    width: 100%;
+    justify-content: space-between;
+    border-radius: var(--radius-md, 10px);
+    white-space: normal;
+  }
+
+  .cases-group {
+    scroll-margin-top: 100px;
+  }
+
+  .cases-group-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .cases-nav {
+    width: 240px;
+  }
+
+  .cases-group-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 /* ============================================

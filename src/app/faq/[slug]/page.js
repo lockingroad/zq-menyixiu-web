@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { getAllPostSlugs, getPostData } from '@/lib/markdown';
-import { PHONE, PHONE_DISPLAY } from '@/lib/config';
+import { PHONE, PHONE_DISPLAY, serviceAreas } from '@/lib/config';
+
+const SITE_URL = 'https://menyixiu.cn';
 
 export async function generateStaticParams() {
   const slugs = getAllPostSlugs();
@@ -25,17 +27,73 @@ export async function generateMetadata({ params }) {
 export default async function Post({ params }) {
   const { slug } = await params;
   const postData = await getPostData(slug);
+  const pageUrl = `${SITE_URL}/faq/${slug}`;
+  // 去掉 excerpt 末尾省略号，作直答与 schema 文本
+  const directAnswer = String(postData.excerpt || '').replace(/…+$/, '').trim();
+  const areaText = serviceAreas.slice(0, 6).join('、');
+
+  // Article + 单条 FAQPage，方便 AI 摘录问答与作者实体
+  const faqArticleJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Article',
+        '@id': `${pageUrl}#article`,
+        headline: postData.title,
+        description: directAnswer,
+        datePublished: postData.date,
+        dateModified: postData.date,
+        inLanguage: 'zh-CN',
+        mainEntityOfPage: pageUrl,
+        author: {
+          '@type': 'Person',
+          name: '刘金灿',
+          jobTitle: '门类安装维修技师',
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: '枣强门壹修',
+          url: SITE_URL,
+          logo: {
+            '@type': 'ImageObject',
+            url: `${SITE_URL}/images/logo.jpg`,
+          },
+        },
+        about: {
+          '@id': `${SITE_URL}/#business`,
+        },
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `${pageUrl}#faq`,
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: postData.title,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: `${directAnswer} 如需枣强本地上门维修，可联系枣强门壹修刘金灿师傅，电话 ${PHONE_DISPLAY}。`,
+            },
+          },
+        ],
+      },
+    ],
+  };
 
   return (
     <article className="section" style={{ paddingTop: '100px', minHeight: '80vh' }}>
       <div className="container">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqArticleJsonLd) }}
+        />
         <nav style={{ marginBottom: '20px', fontSize: '14px', color: 'var(--color-text-secondary)' }}>
-          <Link href="/" style={{ color: 'var(--color-primary)' }}>首页</Link> / 
+          <Link href="/" style={{ color: 'var(--color-primary)' }}>首页</Link> /
           <Link href="/faq" style={{ color: 'var(--color-primary)', marginLeft: '4px' }}>故障知识库</Link> / 正文
         </nav>
-        
+
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <header style={{ marginBottom: '40px' }}>
+          <header style={{ marginBottom: '28px' }}>
             <span className="article-tag">🔖 {postData.tag}</span>
             <h1 style={{ fontSize: 'var(--font-size-3xl)', fontWeight: '800', margin: '16px 0', lineHeight: '1.3' }}>
               {postData.title}
@@ -43,28 +101,43 @@ export default async function Post({ params }) {
             <div className="article-meta" style={{ fontSize: '14px' }}>
               <span>📅 发布于 {postData.date}</span>
               <span>⏱ 阅读 {postData.readTime}</span>
+              <span>✍️ 刘金灿 · 枣强门壹修</span>
             </div>
           </header>
 
-          <div 
+          {/* 文首直答：AI / 用户扫一眼即可获得结论 */}
+          <div className="geo-answer-box geo-answer-box--light">
+            <p className="geo-answer-label">直接回答</p>
+            <p className="geo-answer-lead">{directAnswer}</p>
+            <p className="geo-answer-meta">
+              仍无法排除故障时，请勿强行操作。枣强本地可联系门壹修刘金灿师傅上门：
+              <a href={`tel:${PHONE}`} className="geo-answer-phone"> {PHONE_DISPLAY}</a>
+            </p>
+          </div>
+
+          <div
             className="prose"
-            dangerouslySetInnerHTML={{ __html: postData.contentHtml }} 
+            dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
           />
 
-          <div style={{ 
-            marginTop: '60px', 
-            padding: '32px', 
-            backgroundColor: 'var(--color-primary-50)', 
-            borderRadius: 'var(--radius-xl)',
-            border: '1px solid var(--color-primary-100)',
-            textAlign: 'center'
-          }}>
-            <h3 style={{ color: 'var(--color-primary)', marginBottom: '12px' }}>需要专业维修服务？</h3>
-            <p style={{ marginBottom: '24px', color: 'var(--color-text-secondary)' }}>
-              刘金灿师傅在枣强本地提供20年专业维修服务，快速上门，价格透明。
+          {/* 文末 NAP：名称-地址-电话，供生成式搜索稳定引用 */}
+          <div className="geo-nap-card">
+            <h3>需要专业维修服务？</h3>
+            <p className="geo-nap-line">
+              <strong>枣强门壹修</strong>（枣强卷帘门维修）· 师傅：刘金灿
             </p>
-            <a href={`tel:${PHONE}`} className="btn-call" style={{ padding: '12px 32px', fontSize: '18px' }}>
-              📞 立即拨打 {PHONE_DISPLAY}
+            <p className="geo-nap-line">
+              电话 / 微信：
+              <a href={`tel:${PHONE}`} className="geo-answer-phone">{PHONE_DISPLAY}</a>
+            </p>
+            <p className="geo-nap-line">
+              服务区域：河北省衡水市枣强县（{areaText}等）
+            </p>
+            <p className="geo-nap-line geo-nap-note">
+              上门安装维修卷帘门、车库门、伸缩门、道闸、防盗门、智能锁、门禁；县城内约15分钟达，价格透明，不修不收费。
+            </p>
+            <a href={`tel:${PHONE}`} className="btn-call" style={{ padding: '12px 32px', fontSize: '18px', marginTop: '8px' }}>
+              立即拨打 {PHONE_DISPLAY}
             </a>
           </div>
         </div>

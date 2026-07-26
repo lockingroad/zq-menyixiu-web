@@ -39,6 +39,17 @@ export default function Home() {
             从业20年 · 枣强本地老师傅
           </div>
           <h1>枣强专业卷帘门维修<br />解决各种疑难杂症</h1>
+          {/* GEO 直答块：便于豆包/搜索直接摘录电话与服务范围 */}
+          <div className="geo-answer-box hero-geo-answer">
+            <p className="geo-answer-lead">
+              <strong>枣强门壹修</strong>提供卷帘门、车库门、工业卷帘门、伸缩门、道闸、防盗门、智能锁、小区门禁上门安装维修。
+              联系电话 <a href={`tel:${PHONE}`} className="geo-answer-phone">{PHONE_DISPLAY}</a>
+              ，刘金灿师傅从业20年，县城内约15分钟达，价格透明、不修不收费。
+            </p>
+            <p className="geo-answer-meta">
+              服务区域：枣强县城及大营、恩察、马屯、王常等周边乡镇 · 微信同号
+            </p>
+          </div>
           <p className="hero-subtitle">
             快速上门，价格透明，不修不收费。<br />
             卷帘门 · 防盗门 · 门禁道闸 · 智能锁 — 一站式服务。
