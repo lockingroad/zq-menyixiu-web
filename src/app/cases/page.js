@@ -1,5 +1,11 @@
 import Link from 'next/link';
-import { repairCases, DOUYIN_URL, PHONE, PHONE_DISPLAY } from '@/lib/config';
+import {
+  repairCases,
+  groupRepairCasesByLocation,
+  DOUYIN_URL,
+  PHONE,
+  PHONE_DISPLAY,
+} from '@/lib/config';
 
 const SITE_URL = 'https://menyixiu.cn';
 
@@ -12,33 +18,20 @@ export const metadata = {
   },
 };
 
-/** 生成锚点 id（中文地点可作 HTML id，额外做轻量清洗） */
-function locationAnchorId(location) {
-  return `loc-${String(location).replace(/\s+/g, '')}`;
-}
-
-/** 按地点分组：案例多的地点排前，同地点内保持原有日期倒序 */
-function groupCasesByLocation(cases) {
-  const map = new Map();
-  for (const item of cases) {
-    const key = item.location || '其他';
-    if (!map.has(key)) map.set(key, []);
-    map.get(key).push(item);
-  }
-  return [...map.entries()]
-    .map(([location, items]) => ({
-      location,
-      id: locationAnchorId(location),
-      items,
-      count: items.length,
-    }))
-    .sort((a, b) => b.count - a.count || a.location.localeCompare(b.location, 'zh-CN'));
-}
-
 function CaseCard({ item }) {
   const content = (
     <>
-      <span className="case-feed-tag">{item.tag}</span>
+      <div className="case-feed-tags">
+        <span className="case-feed-tag">{item.tag}</span>
+        {item.badges?.map((badge) => (
+          <span
+            className={`case-feed-status-tag${badge === '新案例' ? ' case-feed-status-tag--new' : ''}`}
+            key={badge}
+          >
+            {badge}
+          </span>
+        ))}
+      </div>
       <h3>{item.title}</h3>
       <div className="cases-card-meta">
         📍 {item.location} · 📅 {item.date}
@@ -60,7 +53,7 @@ function CaseCard({ item }) {
 }
 
 export default function CasesPage() {
-  const groups = groupCasesByLocation(repairCases);
+  const groups = groupRepairCasesByLocation(repairCases);
   const total = repairCases.length;
 
   // ItemList：按小区分块，便于检索「某小区维修」类意图

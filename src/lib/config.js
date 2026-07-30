@@ -209,9 +209,11 @@ export const repairCases = [
   },
   {
     slug: 'hualian-south-industrial-roller-door',
+    featured: true,
+    badges: ['新案例', '图文实拍'],
     date: '2026-06-07',
     tag: '工业卷帘门',
-    location: '枣强华联南边门市',
+    location: '枣强门市',
     title: '工业卷帘门点击空转、门体无反应',
     desc: '门市客户反映工业卷帘门点击后只听到设备空转，门体没有反应。上门检查确认传动链条折断，更换链条并调整松紧、反复调试后，卷帘门恢复正常升降。',
     customerReport:
@@ -225,7 +227,7 @@ export const repairCases = [
     images: [
       {
         src: '/images/cases/hualian-south-industrial-roller-door/door-overview.webp',
-        alt: '枣强华联南边门市工业卷帘门现场检修全景',
+        alt: '枣强门市工业卷帘门现场检修全景',
       },
       {
         src: '/images/cases/hualian-south-industrial-roller-door/onsite-repair.webp',
@@ -346,6 +348,39 @@ export const detailedRepairCases = repairCases.filter((item) => item.slug);
 
 export function getRepairCaseBySlug(slug) {
   return detailedRepairCases.find((item) => item.slug === slug);
+}
+
+export function groupRepairCasesByLocation(cases) {
+  const groups = new Map();
+
+  for (const item of cases) {
+    const location = item.location || '其他';
+    if (!groups.has(location)) groups.set(location, []);
+    groups.get(location).push(item);
+  }
+
+  return [...groups.entries()]
+    .map(([location, items]) => {
+      const sortedItems = [...items].sort(
+        (a, b) =>
+          Number(Boolean(b.featured)) - Number(Boolean(a.featured)) ||
+          String(b.date).localeCompare(String(a.date)),
+      );
+
+      return {
+        location,
+        id: `loc-${String(location).replace(/\s+/g, '')}`,
+        items: sortedItems,
+        count: sortedItems.length,
+        featured: sortedItems.some((item) => item.featured),
+      };
+    })
+    .sort(
+      (a, b) =>
+        Number(b.featured) - Number(a.featured) ||
+        b.count - a.count ||
+        a.location.localeCompare(b.location, 'zh-CN'),
+    );
 }
 
 export const serviceAreas = [

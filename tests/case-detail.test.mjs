@@ -2,16 +2,17 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { repairCases } from '../src/lib/config.js';
+import * as caseConfig from '../src/lib/config.js';
 
 const caseSlug = 'hualian-south-industrial-roller-door';
+const { repairCases } = caseConfig;
 
-test('华联南侧工业卷帘门案例具备可发布的详情数据与图片', () => {
+test('枣强门市工业卷帘门案例具备可发布的详情数据与图片', () => {
   const repairCase = repairCases.find((item) => item.slug === caseSlug);
 
   assert.ok(repairCase, `缺少案例 slug：${caseSlug}`);
   assert.equal(repairCase.date, '2026-06-07');
-  assert.equal(repairCase.location, '枣强华联南边门市');
+  assert.equal(repairCase.location, '枣强门市');
   assert.match(repairCase.title, /工业卷帘门/);
   assert.match(repairCase.customerReport, /没反应/);
   assert.match(repairCase.customerReport, /空转/);
@@ -28,4 +29,20 @@ test('华联南侧工业卷帘门案例具备可发布的详情数据与图片',
     );
     assert.ok(existsSync(publicImagePath), `图片不存在：${image.src}`);
   }
+});
+
+test('图文案例在地点导航和案例列表中置顶', () => {
+  assert.equal(
+    typeof caseConfig.groupRepairCasesByLocation,
+    'function',
+    '缺少可测试的案例分组排序函数',
+  );
+
+  const groups = caseConfig.groupRepairCasesByLocation(repairCases);
+  const featuredCase = groups[0]?.items[0];
+
+  assert.equal(groups[0]?.location, '枣强门市');
+  assert.equal(featuredCase?.slug, caseSlug);
+  assert.equal(featuredCase?.featured, true);
+  assert.deepEqual(featuredCase?.badges, ['新案例', '图文实拍']);
 });

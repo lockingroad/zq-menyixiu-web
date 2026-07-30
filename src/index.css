@@ -666,6 +666,37 @@ button {
   letter-spacing: 0.04em;
 }
 
+.case-feed-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: var(--space-3);
+}
+
+.case-feed-tags .case-feed-tag {
+  margin-bottom: 0;
+}
+
+.case-feed-status-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid rgba(53, 82, 74, 0.18);
+  border-radius: var(--radius-full);
+  background: rgba(53, 82, 74, 0.05);
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.case-feed-status-tag--new {
+  border-color: rgba(169, 123, 63, 0.24);
+  background: rgba(169, 123, 63, 0.12);
+  color: var(--color-cta-dark);
+}
+
 .case-feed-card h3 {
   font-size: var(--font-size-lg);
   font-weight: 700;
