@@ -208,11 +208,39 @@ export const repairCases = [
     desc: '业主反映门市门歪斜、一边高一边低。检查为门轴水平失衡，拆下门轴重新调平安装，门体恢复水平、开合正常。',
   },
   {
+    slug: 'hualian-south-industrial-roller-door',
     date: '2026-06-07',
-    tag: '卷帘门',
-    location: '华联南边超市',
-    title: '工业卷帘门拉不动',
-    desc: '超市反映工业卷帘门拉不动。现场查为传动链条折断，更换新链条并调试松紧，卷帘门升降恢复顺畅。',
+    tag: '工业卷帘门',
+    location: '枣强华联南边门市',
+    title: '工业卷帘门点击空转、门体无反应',
+    desc: '门市客户反映工业卷帘门点击后只听到设备空转，门体没有反应。上门检查确认传动链条折断，更换链条并调整松紧、反复调试后，卷帘门恢复正常升降。',
+    customerReport:
+      '客户反馈工业卷帘门突然没反应，点击控制后设备有空转声，但门体不上升也不下降，需要尽快恢复门市正常使用。',
+    inspection:
+      '现场检查电机与传动系统：控制信号和电机运转存在，但动力没有传递到门轴。继续检查后确认传动链条已经折断，这是电机空转、门体不动作的直接原因。',
+    repairProcess:
+      '拆检传动部位，更换适配的传动链条，重新调整链条松紧和运行状态；随后多次测试卷帘门上升、下降及停止位置，确认传动恢复稳定。',
+    result:
+      '维修调试完成后，工业卷帘门可以正常响应控制，升降顺畅，现场交付客户使用。',
+    images: [
+      {
+        src: '/images/cases/hualian-south-industrial-roller-door/door-overview.webp',
+        alt: '枣强华联南边门市工业卷帘门现场检修全景',
+      },
+      {
+        src: '/images/cases/hualian-south-industrial-roller-door/onsite-repair.webp',
+        alt: '门壹修师傅在门市现场检修工业卷帘门',
+      },
+      {
+        src: '/images/cases/hualian-south-industrial-roller-door/motor-and-drive.webp',
+        alt: '工业卷帘门电机与传动机构检查现场',
+      },
+      {
+        src: '/images/cases/hualian-south-industrial-roller-door/chain-repair.webp',
+        alt: '工业卷帘门传动链条维修过程',
+      },
+    ],
+    douyinUrl: 'https://v.douyin.com/p4_xke7yvjM/',
   },
   {
     date: '2026-06-06',
@@ -313,6 +341,12 @@ export const repairCases = [
     desc: '新天地商业街店主反映门市门关不严、松手就回弹。检查为地簧使用寿命到期、零件老化，更换地簧零件后门体开合到位、定位正常。',
   },
 ];
+
+export const detailedRepairCases = repairCases.filter((item) => item.slug);
+
+export function getRepairCaseBySlug(slug) {
+  return detailedRepairCases.find((item) => item.slug === slug);
+}
 
 export const serviceAreas = [
   '枣强县城',

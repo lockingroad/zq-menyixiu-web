@@ -35,6 +35,30 @@ function groupCasesByLocation(cases) {
     .sort((a, b) => b.count - a.count || a.location.localeCompare(b.location, 'zh-CN'));
 }
 
+function CaseCard({ item }) {
+  const content = (
+    <>
+      <span className="case-feed-tag">{item.tag}</span>
+      <h3>{item.title}</h3>
+      <div className="cases-card-meta">
+        📍 {item.location} · 📅 {item.date}
+      </div>
+      <p>{item.desc}</p>
+      {item.slug && <span className="case-feed-detail-link">查看图文详情 →</span>}
+    </>
+  );
+
+  if (item.slug) {
+    return (
+      <Link href={`/cases/${item.slug}`} className="case-feed-card case-feed-card--linked">
+        {content}
+      </Link>
+    );
+  }
+
+  return <article className="case-feed-card">{content}</article>;
+}
+
 export default function CasesPage() {
   const groups = groupCasesByLocation(repairCases);
   const total = repairCases.length;
@@ -124,17 +148,10 @@ export default function CasesPage() {
                 </header>
                 <div className="case-feed-grid cases-group-grid">
                   {g.items.map((item) => (
-                    <article
-                      className="case-feed-card"
+                    <CaseCard
                       key={`${item.date}-${item.location}-${item.title}`}
-                    >
-                      <span className="case-feed-tag">{item.tag}</span>
-                      <h3>{item.title}</h3>
-                      <div className="cases-card-meta">
-                        📍 {item.location} · 📅 {item.date}
-                      </div>
-                      <p>{item.desc}</p>
-                    </article>
+                      item={item}
+                    />
                   ))}
                 </div>
               </section>

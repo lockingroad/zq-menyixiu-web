@@ -17,6 +17,30 @@ export const metadata = {
   },
 };
 
+function HomeCaseCard({ item }) {
+  const content = (
+    <>
+      <span className="case-feed-tag">{item.tag}</span>
+      <h3>{item.title}</h3>
+      <div style={{ fontSize: '13px', color: 'var(--color-text-secondary)', marginBottom: '10px' }}>
+        📍 {item.location} · 📅 {item.date}
+      </div>
+      <p>{item.desc}</p>
+      {item.slug && <span className="case-feed-detail-link">查看图文详情 →</span>}
+    </>
+  );
+
+  if (item.slug) {
+    return (
+      <Link href={`/cases/${item.slug}`} className="case-feed-card case-feed-card--linked">
+        {content}
+      </Link>
+    );
+  }
+
+  return <article className="case-feed-card">{content}</article>;
+}
+
 export default function Home() {
   const allPostsData = getSortedPostsData().slice(0, 6);
   const recentCases = repairCases.slice(0, 12);
@@ -110,14 +134,7 @@ export default function Home() {
           </p>
           <div className="case-feed-grid">
             {recentCases.map((item) => (
-              <article className="case-feed-card" key={`${item.date}-${item.location}`}>
-                <span className="case-feed-tag">{item.tag}</span>
-                <h3>{item.title}</h3>
-                <div style={{ fontSize: '13px', color: 'var(--color-text-secondary)', marginBottom: '10px' }}>
-                  📍 {item.location} · 📅 {item.date}
-                </div>
-                <p>{item.desc}</p>
-              </article>
+              <HomeCaseCard key={`${item.date}-${item.location}`} item={item} />
             ))}
           </div>
           <div className="case-feed-cta">
