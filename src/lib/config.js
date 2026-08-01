@@ -30,6 +30,54 @@ export const douyinTopics = [
 // 文案按“故障现象 → 判断 → 处理”改写，方便客户阅读。
 // 地点命名规范与添加流程见：docs/添加维修案例说明.md（添加前须检索已有小区名，避免拆成多个导航项）
 export const repairCases = [
+  // —— 2026-07-20 ~ 07-26 ——
+  {
+    slug: 'xintiandi-underground-garage-tubular-motor',
+    featured: true,
+    badges: ['新案例', '图文实拍'],
+    date: '2026-07-26',
+    tag: '管状电机',
+    location: '新天地',
+    title: '地下车库卷帘门无反应，更换管状电机',
+    desc: '新天地地下车库用户反映卷帘门操作后没有反应。上门检查确认原管状电机损坏，拆换适配电机并重新接线、调整上下行程，多次测试后卷帘门恢复正常启停。',
+    customerReportTitle: '操作后卷帘门没有反应',
+    customerReport:
+      '用户反馈地下车库卷帘门突然没反应，按下控制后门体没有升降动作，影响车辆正常进出，希望尽快上门排查处理。',
+    inspectionTitle: '确认原管状电机已经损坏',
+    inspection:
+      '现场检查卷帘门的供电、控制与驱动状态后，确认原管状电机损坏，无法继续带动卷轴和门体运行，需要更换适配的新电机。',
+    repairTitle: '更换管状电机并重新设定行程',
+    repairProcess:
+      '拆开卷帘门传动部位并取出旧管状电机，更换并固定适配的新电机，完成线路连接；随后重新调整上、下行程位置，并反复进行升降与停止测试。',
+    resultTitle: '地下车库卷帘门恢复正常启停',
+    result:
+      '更换和调试完成后，卷帘门可以正常响应控制，上升、下降和停止位置准确，现场交付用户使用。',
+    galleryTitle: '管状电机与现场更换过程',
+    safetyTitle: '卷帘门完全没反应时怎么处理？',
+    safetyText:
+      '可先确认车库是否正常供电、遥控器或墙壁开关是否有明显异常。若门体仍无动作，不要反复通电或自行拆卸卷轴；管状电机安装在门轴内部，应由专业人员现场检测后再维修或更换。',
+    serviceName: '枣强地下车库卷帘门管状电机更换',
+    serviceType: '车库卷帘门管状电机维修',
+    douyinUrl: 'https://v.douyin.com/zyMRwnGMVN0/',
+    images: [
+      {
+        src: '/images/cases/xintiandi-underground-garage-tubular-motor/xintiandi-entrance.webp',
+        alt: '枣强新天地地下车库卷帘门上门维修地点',
+      },
+      {
+        src: '/images/cases/xintiandi-underground-garage-tubular-motor/tubular-motor.webp',
+        alt: '地下车库卷帘门待更换的管状电机',
+      },
+      {
+        src: '/images/cases/xintiandi-underground-garage-tubular-motor/motor-installation.webp',
+        alt: '门壹修师傅现场安装卷帘门管状电机',
+      },
+      {
+        src: '/images/cases/xintiandi-underground-garage-tubular-motor/repaired-door.webp',
+        alt: '新天地地下车库卷帘门维修完成效果',
+      },
+    ],
+  },
   // —— 2026-07-13 ~ 07-19 ——
   {
     date: '2026-07-17',
@@ -126,7 +174,7 @@ export const repairCases = [
   {
     date: '2026-06-23',
     tag: '门市门',
-    location: '新天地商业街',
+    location: '新天地',
     title: '门市卷帘门被顶出槽',
     desc: '店主反映门市卷帘门卡住、跑偏出槽。上门查看发现门体下方被物品顶住致其脱出导槽，清理障碍后重新顺槽复位，开关恢复正常。',
   },
@@ -224,6 +272,16 @@ export const repairCases = [
       '拆检传动部位，更换适配的传动链条，重新调整链条松紧和运行状态；随后多次测试卷帘门上升、下降及停止位置，确认传动恢复稳定。',
     result:
       '维修调试完成后，工业卷帘门可以正常响应控制，升降顺畅，现场交付客户使用。',
+    customerReportTitle: '点击后只有空转声，门体没有反应',
+    inspectionTitle: '从控制、电机到传动机构逐项排查',
+    repairTitle: '更换传动链条并重新调试',
+    resultTitle: '卷帘门恢复正常升降',
+    galleryTitle: '设备检查与维修过程',
+    safetyTitle: '出现“电机响、门不动”时怎么处理？',
+    safetyText:
+      '先停止反复操作，避免电机持续空转或传动部件进一步受损。工业卷帘门门体较重，不建议自行拆卸电机、链条或门轴；可记录故障现象，并联系专业人员现场检查。',
+    serviceName: '枣强工业卷帘门上门维修',
+    serviceType: '工业卷帘门维修',
     images: [
       {
         src: '/images/cases/hualian-south-industrial-roller-door/door-overview.webp',
@@ -338,9 +396,9 @@ export const repairCases = [
   {
     date: '2026-05-25',
     tag: '门市门',
-    location: '新天地商业街',
+    location: '新天地',
     title: '门市门关不严、自动回弹',
-    desc: '新天地商业街店主反映门市门关不严、松手就回弹。检查为地簧使用寿命到期、零件老化，更换地簧零件后门体开合到位、定位正常。',
+    desc: '新天地店主反映门市门关不严、松手就回弹。检查为地簧使用寿命到期、零件老化，更换地簧零件后门体开合到位、定位正常。',
   },
 ];
 
