@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { getSortedPostsData } from '@/lib/markdown';
+import { BRAND_NAME } from '@/lib/config';
 
 export const metadata = {
   title: '常见故障排查 - 枣强卷帘门维修知识库',
-  description: '汇集枣强门壹修20年维修经验，为您解决卷帘门卡死、遥控器失灵、电机嗡嗡响等各类常见故障。',
+  description: `汇集${BRAND_NAME}20年维修经验，为您解决卷帘门卡死、遥控器失灵、电机嗡嗡响等各类常见故障。`,
   alternates: {
     canonical: '/faq',
   },

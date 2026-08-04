@@ -1,6 +1,14 @@
 import Link from 'next/link';
 import { getAllPostSlugs, getPostData } from '@/lib/markdown';
-import { PHONE, PHONE_DISPLAY, serviceAreas } from '@/lib/config';
+import {
+  BRAND_NAME,
+  PHONE,
+  PHONE_DISPLAY,
+  SERVICE_PROMISES,
+  SERVICE_RESPONSE_NOTE,
+  SERVICE_RESPONSE_TEXT,
+  serviceAreas,
+} from '@/lib/config';
 
 const SITE_URL = 'https://menyixiu.cn';
 
@@ -52,7 +60,7 @@ export default async function Post({ params }) {
         },
         publisher: {
           '@type': 'Organization',
-          name: '枣强门壹修',
+          name: BRAND_NAME,
           url: SITE_URL,
           logo: {
             '@type': 'ImageObject',
@@ -72,7 +80,7 @@ export default async function Post({ params }) {
             name: postData.title,
             acceptedAnswer: {
               '@type': 'Answer',
-              text: `${directAnswer} 如需枣强本地上门维修，可联系枣强门壹修刘金灿师傅，电话 ${PHONE_DISPLAY}。`,
+              text: `${directAnswer} 如需枣强本地上门维修，可联系${BRAND_NAME}刘金灿师傅，电话 ${PHONE_DISPLAY}。`,
             },
           },
         ],
@@ -101,7 +109,7 @@ export default async function Post({ params }) {
             <div className="article-meta" style={{ fontSize: '14px' }}>
               <span>📅 发布于 {postData.date}</span>
               <span>⏱ 阅读 {postData.readTime}</span>
-              <span>✍️ 刘金灿 · 枣强门壹修</span>
+              <span>✍️ 刘金灿 · {BRAND_NAME}</span>
             </div>
           </header>
 
@@ -110,7 +118,7 @@ export default async function Post({ params }) {
             <p className="geo-answer-label">直接回答</p>
             <p className="geo-answer-lead">{directAnswer}</p>
             <p className="geo-answer-meta">
-              仍无法排除故障时，请勿强行操作。枣强本地可联系门壹修刘金灿师傅上门：
+              仍无法排除故障时，请勿强行操作。枣强本地可联系{BRAND_NAME}刘金灿师傅上门：
               <a href={`tel:${PHONE}`} className="geo-answer-phone"> {PHONE_DISPLAY}</a>
             </p>
           </div>
@@ -124,7 +132,7 @@ export default async function Post({ params }) {
           <div className="geo-nap-card">
             <h3>需要专业维修服务？</h3>
             <p className="geo-nap-line">
-              <strong>枣强门壹修</strong>（枣强卷帘门维修）· 师傅：刘金灿
+              <strong>{BRAND_NAME}</strong>（枣强卷帘门维修）· 师傅：刘金灿
             </p>
             <p className="geo-nap-line">
               电话 / 微信：
@@ -134,7 +142,8 @@ export default async function Post({ params }) {
               服务区域：河北省衡水市枣强县（{areaText}等）
             </p>
             <p className="geo-nap-line geo-nap-note">
-              上门安装维修卷帘门、车库门、伸缩门、道闸、防盗门、智能锁、门禁；县城内约15分钟达，价格透明，不修不收费。
+              上门安装维修卷帘门、车库门、伸缩门、道闸、防盗门、智能锁、门禁；
+              {SERVICE_RESPONSE_TEXT}，{SERVICE_RESPONSE_NOTE}；{SERVICE_PROMISES.join('、')}。
             </p>
             <a href={`tel:${PHONE}`} className="btn-call" style={{ padding: '12px 32px', fontSize: '18px', marginTop: '8px' }}>
               立即拨打 {PHONE_DISPLAY}

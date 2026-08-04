@@ -2,8 +2,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import {
+  BRAND_NAME,
   PHONE,
   PHONE_DISPLAY,
+  SERVICE_PROMISES,
+  SERVICE_RESPONSE_NOTE,
+  SERVICE_RESPONSE_TEXT,
   detailedRepairCases,
   getRepairCaseBySlug,
 } from '@/lib/config';
@@ -27,13 +31,13 @@ export async function generateMetadata({ params }) {
   const pagePath = `/cases/${repairCase.slug}`;
 
   return {
-    title: `${repairCase.title}维修案例 | 枣强门壹修`,
+    title: `${repairCase.title}维修案例 | ${BRAND_NAME}`,
     description: repairCase.desc,
     alternates: {
       canonical: pagePath,
     },
     openGraph: {
-      title: `${repairCase.title}维修案例 | 枣强门壹修`,
+      title: `${repairCase.title}维修案例 | ${BRAND_NAME}`,
       description: repairCase.desc,
       url: pagePath,
       type: 'article',
@@ -73,7 +77,7 @@ export default async function CaseDetailPage({ params }) {
         },
         publisher: {
           '@type': 'Organization',
-          name: '枣强门壹修',
+          name: BRAND_NAME,
           url: SITE_URL,
           logo: {
             '@type': 'ImageObject',
@@ -242,11 +246,12 @@ export default async function CaseDetailPage({ params }) {
             )}
           </div>
 
-          <aside className="case-detail-contact" aria-label="联系门壹修">
+          <aside className="case-detail-contact" aria-label={`联系${BRAND_NAME}`}>
             <p className="case-detail-kicker">枣强本地上门</p>
-            <h2>门壹修</h2>
+            <h2>{BRAND_NAME}</h2>
             <p>
-              卷帘门、车库门、工业卷帘门等安装维修。电话与微信同号，沟通时可说明门体类型和故障现象。
+              卷帘门、车库门、工业卷帘门等安装维修。{SERVICE_RESPONSE_TEXT}，
+              {SERVICE_RESPONSE_NOTE}；{SERVICE_PROMISES.join('、')}。电话与微信同号。
             </p>
             <a href={`tel:${PHONE}`} className="btn-call">
               拨打 {PHONE_DISPLAY}

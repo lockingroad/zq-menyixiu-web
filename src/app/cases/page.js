@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import {
+  BRAND_NAME,
   repairCases,
   groupRepairCasesByLocation,
   DOUYIN_URL,
@@ -10,7 +11,7 @@ import {
 const SITE_URL = 'https://menyixiu.cn';
 
 export const metadata = {
-  title: '全部维修案例 - 按小区查看 | 枣强门壹修',
+  title: `全部维修案例 - 按小区查看 | ${BRAND_NAME}`,
   description:
     '枣强本地真实上门维修案例，按小区/地点分类汇总，覆盖东瑞、福瑞祥、佳润花园、帝景城等，卷帘门、车库门、伸缩门、道闸等持续更新。',
   alternates: {
@@ -60,7 +61,7 @@ export default function CasesPage() {
   const casesJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: '枣强门壹修全部真实维修案例',
+    name: `${BRAND_NAME}全部真实维修案例`,
     description: '按小区/地点分类的枣强本地上门维修记录',
     url: `${SITE_URL}/cases`,
     about: {

@@ -1,9 +1,21 @@
 export const PHONE = '13784884521';
 export const PHONE_DISPLAY = '137-8488-4521';
+export const BRAND_NAME = '枣强门壹修';
+export const SERVICE_RESPONSE_TEXT = '通常约30分钟响应';
+export const SERVICE_RESPONSE_NOTE = '实际响应及到达时间以距离和当时工单为准';
+export const SERVICE_PROMISES = ['价格透明', '不修不收费'];
+export const HOME_FAQ_SLUGS = [
+  'remote-failure',
+  'door-stuck',
+  'motor-humming',
+  'auto-rebound',
+  'spring-broken',
+  'rail-rust',
+];
 export const DOUYIN_URL = 'https://www.douyin.com/user/MS4wLjABAAAAvm4675WrByGA48-Jjs0IMBvTvcE6clOozEzRYH8ENsE?from_tab_name=main';
 
 export const douyinProfile = {
-  accountName: '枣强门壹修',
+  accountName: BRAND_NAME,
   douyinId: '78035798381',
   works: '90+',
   fans: '1400+',
@@ -70,7 +82,7 @@ export const repairCases = [
       },
       {
         src: '/images/cases/xintiandi-underground-garage-tubular-motor/motor-installation.webp',
-        alt: '门壹修师傅现场安装卷帘门管状电机',
+        alt: `${BRAND_NAME}师傅现场安装卷帘门管状电机`,
       },
       {
         src: '/images/cases/xintiandi-underground-garage-tubular-motor/repaired-door.webp',
@@ -289,7 +301,7 @@ export const repairCases = [
       },
       {
         src: '/images/cases/hualian-south-industrial-roller-door/onsite-repair.webp',
-        alt: '门壹修师傅在门市现场检修工业卷帘门',
+        alt: `${BRAND_NAME}师傅在门市现场检修工业卷帘门`,
       },
       {
         src: '/images/cases/hualian-south-industrial-roller-door/motor-and-drive.webp',
@@ -510,5 +522,25 @@ export const services = [
     icon: '🏡',
     title: '农村自建房大门维修安装',
     desc: '农村自建房、庭院大门维修安装，处理门体变形、合页损坏、开关不畅等问题，上门服务。',
+  },
+];
+
+// 首页只展示四组清晰的业务方向；完整服务清单仍由 services 提供给结构化数据。
+export const HOME_SERVICE_GROUPS = [
+  {
+    title: '卷帘门与门体',
+    items: ['卷帘门', '工业卷帘门', '车库门', '肯德基门', '防盗门', '农村大门'],
+  },
+  {
+    title: '电机、遥控与控制',
+    items: ['电机异响或不转', '遥控器与控制器', '限位与行程', '门体卡住或脱槽'],
+  },
+  {
+    title: '门禁与锁具',
+    items: ['智能锁', '磁吸锁', '人脸识别', '小区门禁'],
+  },
+  {
+    title: '道闸与车辆出入',
+    items: ['道闸自抬杆', '车牌识别', '电动伸缩门', '出入口联动设备'],
   },
 ];
