@@ -12,13 +12,16 @@ export default function sitemap() {
     { url: '/cases', priority: 0.8, changeFrequency: 'weekly' },
   ];
 
-  const faqRoutes = getSortedPostsData().map((post) => ({
-    url: `/faq/${post.slug}`,
-    priority: 0.7,
-    changeFrequency: 'monthly',
-    // post.date 形如 2026-02-08，作为该文章最后更新时间
-    lastModified: post.date ? new Date(post.date) : lastModified,
-  }));
+  const faqRoutes = getSortedPostsData().map((post) => {
+    const modifiedDate = post.updated || post.date;
+
+    return {
+      url: `/faq/${post.slug}`,
+      priority: 0.7,
+      changeFrequency: 'monthly',
+      lastModified: modifiedDate ? new Date(modifiedDate) : lastModified,
+    };
+  });
 
   const caseRoutes = detailedRepairCases.map((repairCase) => ({
     url: `/cases/${repairCase.slug}`,

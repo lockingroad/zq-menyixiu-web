@@ -1819,6 +1819,138 @@ button:focus-visible {
 }
 
 /* ============================================
+   Video FAQ
+   ============================================ */
+.faq-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  max-width: 800px;
+  margin: 0 auto var(--space-5);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.faq-breadcrumb span {
+  min-width: 0;
+}
+
+.faq-article-meta {
+  flex-wrap: wrap;
+  row-gap: var(--space-2);
+}
+
+.faq-article-meta span {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.faq-video-card {
+  display: grid;
+  gap: 0;
+  margin: var(--space-10) 0;
+  overflow: hidden;
+  background: var(--color-primary-dark);
+  border: 1px solid rgba(169, 123, 63, 0.26);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.faq-video-frame {
+  display: flex;
+  justify-content: center;
+  background: #111815;
+}
+
+.faq-video-frame video {
+  display: block;
+  width: min(100%, 380px);
+  aspect-ratio: 9 / 16;
+  max-height: 680px;
+  background: #0d1210;
+  object-fit: contain;
+}
+
+.faq-video-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-7);
+  color: rgba(255, 248, 238, 0.78);
+}
+
+.faq-video-info .section-kicker {
+  color: #e2bf88;
+}
+
+.faq-video-info h2 {
+  margin-bottom: var(--space-4);
+  color: var(--color-white);
+  font-size: var(--font-size-2xl);
+  line-height: 1.35;
+}
+
+.faq-video-info > p:not(.section-kicker) {
+  margin-bottom: var(--space-5);
+  line-height: 1.8;
+}
+
+.faq-video-info a {
+  align-self: flex-start;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid rgba(226, 191, 136, 0.48);
+  color: #f0d4a7;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.faq-video-info a:hover,
+.faq-video-info a:focus-visible {
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.faq-gallery {
+  margin-top: var(--space-16);
+}
+
+.faq-gallery-heading {
+  margin-bottom: var(--space-6);
+}
+
+.faq-gallery-heading h2 {
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-2xl);
+  line-height: 1.35;
+}
+
+.faq-gallery-grid {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.faq-gallery figure {
+  overflow: hidden;
+  background: rgba(255, 252, 246, 0.92);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+}
+
+.faq-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.faq-gallery figcaption {
+  padding: var(--space-4) var(--space-5);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  line-height: 1.7;
+}
+
+/* ============================================
    Responsive Design - Mobile First
    ============================================ */
 
@@ -1911,6 +2043,14 @@ button:focus-visible {
 
   .home-case-image {
     min-height: 320px;
+  }
+
+  .faq-video-card {
+    grid-template-columns: minmax(300px, 0.88fr) minmax(0, 1.12fr);
+  }
+
+  .faq-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .trust-content {
