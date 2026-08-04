@@ -88,6 +88,18 @@ export const SERVICE_PAGES = [
       '电机嗡响、无反应或行程不准，需要把供电、控制器、电容、刹车、门体负载和上下限位分开检查。限位跑偏可以调试；电容、线路或刹车故障可按实际情况维修；确认电机本体损坏后再更换。',
     published: '2026-08-04',
     updated: '2026-08-04',
+    videoGuide: {
+      eyebrow: '故障诊断实拍',
+      title: '限位调了没反应、位置乱跑或自动溜车怎么办？',
+      description:
+        '用71秒实拍区分轨道阻力、限位滑扣、皇冠轮打滑和门体自动下滑，先判断是否必须立即停用。',
+      href: '/faq/roller-door-limit-adjustment-not-working',
+      linkText: '查看限位故障视频 FAQ',
+      image: {
+        src: '/images/faq/roller-door-limit-adjustment-not-working/poster.jpg',
+        alt: '卷帘门无人操作却自行下滑的限位故障实拍画面',
+      },
+    },
     heroImage: {
       src: '/images/cases/xintiandi-underground-garage-tubular-motor/motor-installation.webp',
       alt: '枣强新天地地下车库卷帘门管状电机安装调试现场',

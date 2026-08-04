@@ -89,8 +89,10 @@ FAQ 内容来自 `content/faq/*.md`。每篇文章使用 Markdown 编写，并�
 新增 FAQ 的基本步骤：
 
 1. 在 `content/faq/` 下新增一个 `.md` 文件。
-2. 补充 frontmatter，例如 `title`、`date`、`tag`、`excerpt`、`readTime`。
+2. 补充 frontmatter，例如 `title`、`date`、`updated`、`tag`、`excerpt`、`readTime`。
 3. 文件名会作为文章的 `slug`，自动生成详情页路由。
+
+视频型 FAQ 还可以配置 `sourceUrl`、`video`、`poster`、`images`、`faqs`、`performance`、`relatedService` 和 `reviewer`。公开表现数据必须带 `performance.asOf` 日期，避免把持续变化的抖音数字展示成永久最新值。
 
 ### 3. 修改站点样式
 
@@ -101,6 +103,8 @@ FAQ 内容来自 `content/faq/*.md`。每篇文章使用 Markdown 编写，并�
 - `/`：首页，包含服务介绍、真实案例、FAQ 摘要、抖音信息
 - `/faq`：FAQ 列表页
 - `/faq/[slug]`：FAQ 详情页
+- `/faq/roller-door-limit-adjustment`：限位器调节实拍视频 FAQ
+- `/faq/roller-door-limit-adjustment-not-working`：限位调整无效与自动溜车诊断视频 FAQ
 - `/services/remote-control-repair`：遥控器与控制器维修
 - `/services/motor-limit-repair`：电机与限位维修
 - `/services/roller-door-repair`：卷帘门维修

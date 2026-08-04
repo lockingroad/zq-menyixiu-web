@@ -88,11 +88,20 @@ export default async function ServicePage({ params }) {
             contactType: 'customer service',
           },
         },
-        subjectOf: {
-          '@type': 'CreativeWork',
-          name: service.evidence.title,
-          url: `${SITE_URL}${service.evidence.href}`,
-        },
+        subjectOf: [
+          {
+            '@type': 'CreativeWork',
+            name: service.evidence.title,
+            url: `${SITE_URL}${service.evidence.href}`,
+          },
+          ...(service.videoGuide
+            ? [{
+                '@type': 'CreativeWork',
+                name: service.videoGuide.title,
+                url: `${SITE_URL}${service.videoGuide.href}`,
+              }]
+            : []),
+        ],
       },
       {
         '@type': 'FAQPage',
@@ -177,6 +186,28 @@ export default async function ServicePage({ params }) {
           </div>
         </div>
       </section>
+
+      {service.videoGuide && (
+        <section className="service-video-guide-section" aria-label="限位调节视频指南">
+          <Link href={service.videoGuide.href} className="container service-video-guide">
+            <div className="service-video-guide-image">
+              <Image
+                src={service.videoGuide.image.src}
+                alt={service.videoGuide.image.alt}
+                fill
+                sizes="(min-width: 768px) 360px, 100vw"
+              />
+              <span>播放实拍讲解</span>
+            </div>
+            <div className="service-video-guide-content">
+              <p className="section-kicker">{service.videoGuide.eyebrow}</p>
+              <h2>{service.videoGuide.title}</h2>
+              <p>{service.videoGuide.description}</p>
+              <strong>{service.videoGuide.linkText} <span aria-hidden="true">→</span></strong>
+            </div>
+          </Link>
+        </section>
+      )}
 
       <section className="section service-symptoms">
         <div className="container">

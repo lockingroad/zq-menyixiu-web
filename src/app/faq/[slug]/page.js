@@ -78,6 +78,10 @@ export default async function Post({ params }) {
   const videoUrl = toAbsoluteUrl(video?.src);
   const posterUrl = toAbsoluteUrl(postData.poster);
   const sourceUrl = postData.sourceUrl || null;
+  const faqEntries = [
+    { question: postData.title, answer: directAnswer },
+    ...postData.faqs,
+  ];
   const articleImages = [postData.poster, ...postData.images.map((image) => image.src)]
     .filter(Boolean)
     .map(toAbsoluteUrl);
@@ -97,7 +101,7 @@ export default async function Post({ params }) {
   };
   const videoId = `${pageUrl}#video`;
 
-  // 面包屑 + Article + 单条 FAQPage；视频 FAQ 额外输出 VideoObject。
+  // 面包屑 + Article + 可见问答；视频 FAQ 额外输出 VideoObject。
   const faqArticleJsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -152,25 +156,25 @@ export default async function Post({ params }) {
           ? { '@type': 'Person', name: postData.reviewer }
           : undefined,
         breadcrumb: { '@id': `${pageUrl}#breadcrumb` },
-        mainEntity: [
-          {
-            '@type': 'Question',
-            name: postData.title,
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: `${directAnswer} 如需枣强本地上门维修，可联系${BRAND_NAME}刘金灿师傅，电话 ${PHONE_DISPLAY}。`,
-            },
+        mainEntity: faqEntries.map((faq, index) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: index === 0
+              ? `${faq.answer} 如需枣强本地上门维修，可联系${BRAND_NAME}刘金灿师傅，电话 ${PHONE_DISPLAY}。`
+              : faq.answer,
           },
-        ],
+        })),
       },
       ...(videoUrl && posterUrl
         ? [{
             '@type': 'VideoObject',
             '@id': videoId,
             name: video.title || `${postData.title}视频讲解`,
-            description: directAnswer,
+            description: video.description || directAnswer,
             thumbnailUrl: posterUrl,
-            uploadDate: postData.date,
+            uploadDate: video.uploadDate || postData.date,
             duration: video.duration || undefined,
             contentUrl: videoUrl,
             embedUrl: `${pageUrl}#faq-video`,
@@ -241,7 +245,26 @@ export default async function Post({ params }) {
               <div className="faq-video-info">
                 <p className="section-kicker">实拍视频 · {video.durationLabel || '现场讲解'}</p>
                 <h2 id="faq-video-title">{video.title || postData.title}</h2>
-                <p>先看完整演示，再结合下方文字步骤确认遥控器类型和按键对应关系。</p>
+                <p>{video.description || '先看完整演示，再结合下方文字步骤确认故障现象和处理边界。'}</p>
+                {postData.performance && (
+                  <div className="faq-video-performance" aria-label="原视频公开表现">
+                    <p>公开表现 · 截至 <time dateTime={postData.performance.asOf}>{postData.performance.asOf}</time></p>
+                    <dl>
+                      <div>
+                        <dt>播放</dt>
+                        <dd>{postData.performance.playsLabel}</dd>
+                      </div>
+                      <div>
+                        <dt>点赞</dt>
+                        <dd>{postData.performance.likes}</dd>
+                      </div>
+                      <div>
+                        <dt>收藏</dt>
+                        <dd>{postData.performance.favorites}</dd>
+                      </div>
+                    </dl>
+                  </div>
+                )}
                 {sourceUrl && (
                   <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
                     查看抖音原视频 <span aria-hidden="true">↗</span>
@@ -256,11 +279,31 @@ export default async function Post({ params }) {
             dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
           />
 
+          {postData.faqs.length > 0 && (
+            <section className="faq-subquestions" aria-labelledby="faq-subquestions-title">
+              <div className="faq-gallery-heading">
+                <p className="section-kicker">继续排查</p>
+                <h2 id="faq-subquestions-title">限位调节常见问题</h2>
+              </div>
+              <div className="faq-subquestions-list">
+                {postData.faqs.map((faq, index) => (
+                  <article key={faq.question}>
+                    <span>{String(index + 1).padStart(2, '0')}</span>
+                    <div>
+                      <h3>{faq.question}</h3>
+                      <p>{faq.answer}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
+
           {postData.images.length > 0 && (
             <section className="faq-gallery" aria-labelledby="faq-gallery-title">
               <div className="faq-gallery-heading">
                 <p className="section-kicker">视频关键画面</p>
-                <h2 id="faq-gallery-title">先确认现象，再进行对码</h2>
+                <h2 id="faq-gallery-title">{postData.galleryTitle || '从关键画面看清操作步骤'}</h2>
               </div>
               <div className="faq-gallery-grid">
                 {postData.images.map((image) => (
@@ -277,6 +320,19 @@ export default async function Post({ params }) {
                 ))}
               </div>
             </section>
+          )}
+
+          {postData.relatedService && (
+            <aside className="faq-related-service" aria-label="相关维修服务">
+              <div>
+                <p className="section-kicker">仍未解决</p>
+                <h2>{postData.relatedService.label}</h2>
+                {postData.relatedService.description && <p>{postData.relatedService.description}</p>}
+              </div>
+              <Link href={postData.relatedService.href}>
+                查看服务范围 <span aria-hidden="true">→</span>
+              </Link>
+            </aside>
           )}
 
           {/* 文末 NAP：名称-地址-电话，供生成式搜索稳定引用 */}

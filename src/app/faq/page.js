@@ -45,9 +45,13 @@ export default function FAQList() {
         </p>
 
         <div className="articles-list">
-          {allPostsData.map(({ slug, date, title, tag, excerpt, readTime }) => (
+          {allPostsData.map(({ slug, date, title, tag, excerpt, readTime, video, featured }) => (
             <Link href={`/faq/${slug}`} key={slug} className="article-card">
-              <span className="article-tag">🔖 {tag}</span>
+              <div className="article-card-tags">
+                <span className="article-tag">🔖 {tag}</span>
+                {video && <span className="article-video-tag">实拍视频</span>}
+                {featured && <span className="article-featured-tag">精选</span>}
+              </div>
               <h3>{title}</h3>
               <p>{excerpt}</p>
               <div className="article-meta">

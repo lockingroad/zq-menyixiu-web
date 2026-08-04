@@ -46,6 +46,39 @@ function normalizeImages(images, title) {
     .filter(Boolean);
 }
 
+function normalizeFaqs(faqs) {
+  if (!Array.isArray(faqs)) return [];
+
+  return faqs
+    .filter((faq) => faq && typeof faq === 'object' && faq.question && faq.answer)
+    .map((faq) => ({
+      question: String(faq.question),
+      answer: String(faq.answer),
+    }));
+}
+
+function normalizePerformance(performance) {
+  if (!performance || typeof performance !== 'object' || !performance.asOf) return null;
+
+  return {
+    asOf: String(performance.asOf),
+    plays: Number(performance.plays) || 0,
+    playsLabel: performance.playsLabel || String(performance.plays || 0),
+    likes: Number(performance.likes) || 0,
+    favorites: Number(performance.favorites) || 0,
+  };
+}
+
+function normalizeRelatedService(relatedService) {
+  if (!relatedService || typeof relatedService !== 'object' || !relatedService.href) return null;
+
+  return {
+    href: String(relatedService.href),
+    label: relatedService.label || '查看相关维修服务',
+    description: relatedService.description || '',
+  };
+}
+
 // 所有 FAQ 统一返回完整内容模型；旧 Markdown 未声明 P1 字段时也保持兼容。
 export function normalizePostMetadata(data = {}) {
   const video = normalizeVideo(data.video);
@@ -57,6 +90,10 @@ export function normalizePostMetadata(data = {}) {
     video,
     poster: data.poster || video?.poster || null,
     images: normalizeImages(data.images, data.title),
+    galleryTitle: data.galleryTitle || null,
+    faqs: normalizeFaqs(data.faqs),
+    performance: normalizePerformance(data.performance),
+    relatedService: normalizeRelatedService(data.relatedService),
     reviewer: data.reviewer || null,
   };
 }
@@ -84,13 +121,24 @@ export function getSortedPostsData() {
     };
   });
 
-  // Sort posts by date
+  // 精选视频 FAQ 固定在知识库前部；其余内容仍按原发布日期排序，避免伪造更新时间。
   return allPostsData.sort((a, b) => {
+    if (Boolean(a.featured) !== Boolean(b.featured)) {
+      return a.featured ? -1 : 1;
+    }
+
+    if (a.featured && b.featured) {
+      const rankDifference = (Number(a.featuredOrder) || 999) - (Number(b.featuredOrder) || 999);
+      if (rankDifference !== 0) return rankDifference;
+    }
+
     if (a.date < b.date) {
       return 1;
-    } else {
+    } else if (a.date > b.date) {
       return -1;
     }
+
+    return a.slug.localeCompare(b.slug, 'zh-CN');
   });
 }
 
