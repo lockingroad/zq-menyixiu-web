@@ -14,6 +14,7 @@ import {
   repairCases,
 } from '@/lib/config';
 import { getSortedPostsData } from '@/lib/markdown';
+import { SERVICE_PAGE_LINKS } from '@/lib/service-pages';
 
 // 首页规范链接，仅指向自身，不污染子路由
 export const metadata = {
@@ -150,6 +151,13 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <nav className="home-service-links" aria-label="服务详情页">
+            {SERVICE_PAGE_LINKS.map((item) => (
+              <Link href={item.href} key={item.href}>
+                {item.label} <span aria-hidden="true">→</span>
+              </Link>
+            ))}
+          </nav>
         </div>
       </section>
 

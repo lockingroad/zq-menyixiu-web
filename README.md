@@ -101,6 +101,9 @@ FAQ 内容来自 `content/faq/*.md`。每篇文章使用 Markdown 编写，并�
 - `/`：首页，包含服务介绍、真实案例、FAQ 摘要、抖音信息
 - `/faq`：FAQ 列表页
 - `/faq/[slug]`：FAQ 详情页
+- `/services/remote-control-repair`：遥控器与控制器维修
+- `/services/motor-limit-repair`：电机与限位维修
+- `/services/roller-door-repair`：卷帘门维修
 
 ## 部署
 
@@ -111,6 +114,30 @@ Vercel 常规流程：
 1. 推送到 Git 仓库。
 2. 在 Vercel 导入仓库。
 3. 使用默认 Next.js 构建配置即可完成部署。
+
+### 部署后通知 IndexNow
+
+站点已在根目录托管 IndexNow 密钥文件，并提供批量提交脚本。应在新版本已经可以通过 `https://menyixiu.cn` 访问后执行，避免构建尚未部署时提前通知搜索引擎。
+
+先预览即将提交的 URL 和请求体：
+
+```bash
+npm run indexnow:dry
+```
+
+提交 sitemap 中的全部规范 URL：
+
+```bash
+npm run indexnow
+```
+
+只提交本次新增或更新的 URL：
+
+```bash
+npm run indexnow -- /services/remote-control-repair /services/motor-limit-repair /services/roller-door-repair
+```
+
+提交结果可在 Bing Webmaster Tools 的 IndexNow 页面查看。不要把 `npm run indexnow` 放进 `next build`，应由部署完成后的 CI 步骤或人工发布流程调用。
 
 ## 当前内容特点
 

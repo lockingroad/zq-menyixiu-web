@@ -7,6 +7,7 @@ import {
   SERVICE_RESPONSE_TEXT,
   serviceAreas,
 } from '@/lib/config';
+import { SERVICE_PAGE_LINKS } from '@/lib/service-pages';
 
 export default function Footer() {
   return (
@@ -48,6 +49,14 @@ export default function Footer() {
                 </span>
               ))}
             </div>
+          </div>
+          <div className="footer-section">
+            <h4>主营服务</h4>
+            <nav className="footer-service-links" aria-label="主营服务页面">
+              {SERVICE_PAGE_LINKS.map((item) => (
+                <a href={item.href} key={item.href}>{item.label}</a>
+              ))}
+            </nav>
           </div>
         </div>
         <div className="footer-bottom">

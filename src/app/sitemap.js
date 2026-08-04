@@ -1,38 +1,9 @@
-import { getSortedPostsData } from '@/lib/markdown';
-import { detailedRepairCases } from '@/lib/config';
-
-const SITE_URL = 'https://menyixiu.cn';
+import { getSiteRoutes, SITE_URL } from '@/lib/site-routes';
 
 export default function sitemap() {
-  const lastModified = new Date();
-
-  const staticRoutes = [
-    { url: '/', priority: 1.0, changeFrequency: 'weekly' },
-    { url: '/faq', priority: 0.8, changeFrequency: 'weekly' },
-    { url: '/cases', priority: 0.8, changeFrequency: 'weekly' },
-  ];
-
-  const faqRoutes = getSortedPostsData().map((post) => {
-    const modifiedDate = post.updated || post.date;
-
-    return {
-      url: `/faq/${post.slug}`,
-      priority: 0.7,
-      changeFrequency: 'monthly',
-      lastModified: modifiedDate ? new Date(modifiedDate) : lastModified,
-    };
-  });
-
-  const caseRoutes = detailedRepairCases.map((repairCase) => ({
-    url: `/cases/${repairCase.slug}`,
-    priority: 0.7,
-    changeFrequency: 'monthly',
-    lastModified: new Date(repairCase.date),
-  }));
-
-  return [...staticRoutes, ...faqRoutes, ...caseRoutes].map((route) => ({
-    url: `${SITE_URL}${route.url}`,
-    lastModified: route.lastModified || lastModified,
+  return getSiteRoutes().map((route) => ({
+    url: `${SITE_URL}${route.path}`,
+    lastModified: new Date(`${route.lastModified}T00:00:00.000Z`),
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   }));

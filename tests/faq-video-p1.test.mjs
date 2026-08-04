@@ -64,7 +64,7 @@ test('FAQ 详情页输出面包屑、文章和可选视频结构化数据', () =
 });
 
 test('站点地图优先使用 FAQ 的 updated 字段', () => {
-  const sitemapSource = readFileSync(`${projectRoot}/src/app/sitemap.js`, 'utf8');
+  const sitemapSource = readFileSync(`${projectRoot}/src/lib/site-routes.js`, 'utf8');
 
   assert.match(sitemapSource, /post\.updated \|\| post\.date/);
 });
