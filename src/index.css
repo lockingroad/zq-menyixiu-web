@@ -2765,10 +2765,6 @@ button:focus-visible {
     min-height: 320px;
   }
 
-  .faq-video-card {
-    grid-template-columns: minmax(300px, 0.88fr) minmax(0, 1.12fr);
-  }
-
   .faq-gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2800,6 +2796,24 @@ button:focus-visible {
 
   .footer-main {
     grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  }
+}
+
+/* Video FAQ desktop composition: keep media dominant without crowding the explanation. */
+@media (min-width: 820px) {
+  .faq-video-card {
+    grid-template-columns: minmax(300px, 0.82fr) minmax(0, 1.18fr);
+    column-gap: clamp(var(--space-8), 4vw, var(--space-12));
+    padding: var(--space-4) var(--space-8) var(--space-4) var(--space-4);
+  }
+
+  .faq-video-frame {
+    overflow: hidden;
+    border-radius: calc(var(--radius-xl) - 0.35rem);
+  }
+
+  .faq-video-info {
+    padding: var(--space-8) 0;
   }
 }
 
