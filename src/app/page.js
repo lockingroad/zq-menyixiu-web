@@ -97,14 +97,17 @@ export default function Home() {
           <div className="section-heading">
             <p className="section-kicker">常见故障</p>
             <h2>卷帘门出了什么问题？</h2>
-            <p>先根据现象做安全判断；涉及电机、弹簧或门轴时，请勿强行操作。</p>
+            <p>优先查看带实拍演示的深度排查；涉及电机、弹簧或门轴时，请勿强行操作。</p>
           </div>
           <div className="home-faq-list">
-            {homePosts.map(({ slug, title, excerpt }, index) => (
+            {homePosts.map(({ slug, title, excerpt, video }, index) => (
               <Link href={`/faq/${slug}`} key={slug} className="home-faq-item">
                 <span className="home-faq-number">0{index + 1}</span>
                 <div>
-                  <h3>{title}</h3>
+                  <div className="home-faq-title-row">
+                    <h3>{title}</h3>
+                    {video && <span className="home-faq-video-tag">实拍视频</span>}
+                  </div>
                   <p>{excerpt}</p>
                 </div>
                 <span className="home-faq-arrow" aria-hidden="true">→</span>

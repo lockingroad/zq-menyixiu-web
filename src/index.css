@@ -1367,12 +1367,35 @@ button:focus-visible {
   letter-spacing: 0.08em;
 }
 
-.home-faq-item h3 {
+.home-faq-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
   margin-bottom: var(--space-2);
+}
+
+.home-faq-title-row h3 {
+  margin: 0;
+  flex: 1 1 260px;
   color: var(--color-primary-dark);
   font-size: var(--font-size-lg);
   line-height: 1.45;
   transition: color var(--transition-fast);
+}
+
+.home-faq-video-tag {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  padding: 0.2rem var(--space-2);
+  border-radius: var(--radius-full);
+  background: rgba(53, 82, 74, 0.09);
+  color: var(--color-primary);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
 }
 
 .home-faq-item p {

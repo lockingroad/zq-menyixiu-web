@@ -5,12 +5,12 @@ export const SERVICE_RESPONSE_TEXT = '通常约30分钟响应';
 export const SERVICE_RESPONSE_NOTE = '实际响应及到达时间以距离和当时工单为准';
 export const SERVICE_PROMISES = ['价格透明', '不修不收费'];
 export const HOME_FAQ_SLUGS = [
-  'remote-failure',
+  'roller-door-limit-adjustment-not-working',
+  'roller-door-limit-adjustment',
+  'remote-copy-code-guide',
   'door-stuck',
   'motor-humming',
   'auto-rebound',
-  'spring-broken',
-  'rail-rust',
 ];
 export const DOUYIN_URL = 'https://www.douyin.com/user/MS4wLjABAAAAvm4675WrByGA48-Jjs0IMBvTvcE6clOozEzRYH8ENsE?from_tab_name=main';
 

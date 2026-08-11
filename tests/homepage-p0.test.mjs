@@ -11,6 +11,7 @@ import {
   SERVICE_RESPONSE_TEXT,
   repairCases,
 } from '../src/lib/config.js';
+import { getPostData } from '../src/lib/markdown.js';
 
 const projectRoot = fileURLToPath(new URL('../', import.meta.url));
 
@@ -39,20 +40,29 @@ test('P0 品牌、响应口径与服务承诺由统一配置提供', () => {
   }
 });
 
-test('首页故障顺序固定，且对应的 Markdown 内容均存在', () => {
+test('首页优先展示三篇带实拍视频的深度 FAQ，并保留三类高频故障入口', async () => {
   assert.deepEqual(HOME_FAQ_SLUGS, [
-    'remote-failure',
+    'roller-door-limit-adjustment-not-working',
+    'roller-door-limit-adjustment',
+    'remote-copy-code-guide',
     'door-stuck',
     'motor-humming',
     'auto-rebound',
-    'spring-broken',
-    'rail-rust',
   ]);
 
   for (const slug of HOME_FAQ_SLUGS) {
     const faqPath = fileURLToPath(new URL(`../content/faq/${slug}.md`, import.meta.url));
     assert.ok(existsSync(faqPath), `FAQ 内容不存在：${slug}`);
   }
+
+  const videoPosts = await Promise.all(
+    HOME_FAQ_SLUGS.slice(0, 3).map((slug) => getPostData(slug)),
+  );
+  assert.ok(videoPosts.every((post) => post.video?.src));
+
+  const homeSource = readProjectFile('src/app/page.js');
+  assert.match(homeSource, /home-faq-video-tag/);
+  assert.match(homeSource, /video &&/);
 });
 
 test('首页服务压缩为四组，精选案例只取两个有图详情案例', () => {
