@@ -86,11 +86,13 @@ export function normalizePostMetadata(data = {}) {
   return {
     ...data,
     updated: data.updated || data.date || null,
+    directAnswer: data.directAnswer || data.excerpt || null,
     sourceUrl: data.sourceUrl || null,
     video,
     poster: data.poster || video?.poster || null,
     images: normalizeImages(data.images, data.title),
     galleryTitle: data.galleryTitle || null,
+    faqSectionTitle: data.faqSectionTitle || null,
     faqs: normalizeFaqs(data.faqs),
     performance: normalizePerformance(data.performance),
     relatedService: normalizeRelatedService(data.relatedService),

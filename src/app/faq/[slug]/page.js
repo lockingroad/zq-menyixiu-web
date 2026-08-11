@@ -71,7 +71,7 @@ export default async function Post({ params }) {
   const postData = await getPostData(slug);
   const pageUrl = `${SITE_URL}/faq/${slug}`;
   // 去掉 excerpt 末尾省略号，作直答与 schema 文本
-  const directAnswer = String(postData.excerpt || '').replace(/…+$/, '').trim();
+  const directAnswer = String(postData.directAnswer || postData.excerpt || '').replace(/…+$/, '').trim();
   const areaText = serviceAreas.slice(0, 6).join('、');
   const updatedDate = postData.updated || postData.date;
   const video = postData.video;
@@ -283,7 +283,7 @@ export default async function Post({ params }) {
             <section className="faq-subquestions" aria-labelledby="faq-subquestions-title">
               <div className="faq-gallery-heading">
                 <p className="section-kicker">继续排查</p>
-                <h2 id="faq-subquestions-title">限位调节常见问题</h2>
+                <h2 id="faq-subquestions-title">{postData.faqSectionTitle || '常见问题'}</h2>
               </div>
               <div className="faq-subquestions-list">
                 {postData.faqs.map((faq, index) => (

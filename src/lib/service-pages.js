@@ -10,10 +10,10 @@ export const SERVICE_PAGES = [
     directAnswer:
       '遥控器按了没反应，不一定是电机坏了。应先检查电池、遥控器指示灯、接收器供电和控制器状态；新遥控器还要核对频率、芯片及编码方式。能修复或重新配码的，不会直接建议整套更换。',
     published: '2026-08-04',
-    updated: '2026-08-04',
+    updated: '2026-08-11',
     heroImage: {
-      src: '/images/faq/remote-button-reversed/poster.jpg',
-      alt: '枣强门壹修现场检查卷帘门遥控器按键功能',
+      src: '/images/faq/remote-copy-code-guide/poster.jpg',
+      alt: '枣强门壹修演示卷帘门拷贝码遥控器按键对应关系',
       position: 'center 42%',
     },
     scope: [
@@ -47,14 +47,14 @@ export const SERVICE_PAGES = [
     ],
     evidence: {
       label: '视频实拍',
-      title: '新遥控器按键反向，重新确认按键对应关系',
+      title: '按键反向、拷贝码清码与一控两门的安全边界',
       description:
-        '真实演示新遥控器上下功能颠倒时的判断思路，并说明为什么不应先拆电机或改线路。',
-      href: '/faq/remote-button-reversed',
+        '实拍演示拷贝码的清码和头对头学习；按键反向可交叉对拷，但一控两门必须先确认按键映射并防止误操作。',
+      href: '/faq/remote-copy-code-guide',
       linkText: '查看视频 FAQ',
       image: {
-        src: '/images/faq/remote-button-reversed/check-button-mapping.jpg',
-        alt: '现场测试卷帘门遥控器按键方向',
+        src: '/images/faq/remote-copy-code-guide/copy-signal.jpg',
+        alt: '现场使用两个遥控器头对头学习拷贝码信号',
       },
     },
     faqs: [
