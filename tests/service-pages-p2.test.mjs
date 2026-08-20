@@ -66,7 +66,7 @@ test('sitemap 使用内容更新时间且不同构建结果稳定', () => {
   assert.doesNotMatch(sitemapSource, /new Date\(\)/);
 
   const routeDates = Object.fromEntries(first.map((route) => [route.path, route.lastModified]));
-  assert.equal(routeDates['/'], '2026-08-04');
+  assert.equal(routeDates['/'], '2026-08-20');
   assert.equal(routeDates['/faq'], '2026-08-20');
   assert.equal(routeDates['/cases'], '2026-07-26');
 

@@ -22,7 +22,7 @@ export function getSiteRoutes() {
   const staticRoutes = [
     {
       path: '/',
-      lastModified: '2026-08-04',
+      lastModified: '2026-08-20',
       priority: 1,
       changeFrequency: 'weekly',
     },

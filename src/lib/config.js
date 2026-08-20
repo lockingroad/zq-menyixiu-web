@@ -8,6 +8,8 @@ export const HOME_FAQ_SLUGS = [
   'roller-door-backup-power',
   'roller-door-limit-adjustment-not-working',
   'roller-door-limit-adjustment',
+  'remote-copy-code-guide',
+  'remote-button-reversed',
   'door-stuck',
   'motor-humming',
   'auto-rebound',
