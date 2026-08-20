@@ -7,7 +7,7 @@ excerpt: "如果新遥控器是兼容的拷贝码型号，且旧遥控器仍能�
 directAnswer: "先确认是兼容的拷贝码、旧遥控器正常且门体运行无异常；再按该型号说明清码、头对头学习并逐键复测。上下按键反了可交叉对拷，但不应改动电机线路。一控两门必须为每扇门保留清楚的按键分配，并避免交给不熟悉操作的人使用。"
 readTime: "5分钟"
 featured: true
-featuredOrder: 3
+featuredOrder: 4
 sourceUrl: "https://v.douyin.com/cnXhSRFLEFM/"
 video:
   src: "/videos/faq/remote-copy-code-guide.mp4"

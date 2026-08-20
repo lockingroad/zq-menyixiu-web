@@ -188,7 +188,7 @@ export default async function ServicePage({ params }) {
       </section>
 
       {service.videoGuide && (
-        <section className="service-video-guide-section" aria-label="限位调节视频指南">
+        <section className="service-video-guide-section" aria-label={`${service.name}视频指南`}>
           <Link href={service.videoGuide.href} className="container service-video-guide">
             <div className="service-video-guide-image">
               <Image

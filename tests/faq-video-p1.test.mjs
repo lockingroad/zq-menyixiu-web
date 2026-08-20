@@ -64,7 +64,7 @@ test('遥控 2.1 FAQ 提供可验证的视频证据、数据快照与安全边�
 });
 
 test('旧 FAQ 在未声明 P1 字段时保持兼容默认值', async () => {
-  const post = await getPostData('remote-failure');
+  const post = await getPostData('rail-rust');
 
   assert.equal(post.updated, post.date);
   assert.equal(post.sourceUrl, null);

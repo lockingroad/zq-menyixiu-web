@@ -42,9 +42,9 @@ test('P0 品牌、响应口径与服务承诺由统一配置提供', () => {
 
 test('首页优先展示三篇带实拍视频的深度 FAQ，并保留三类高频故障入口', async () => {
   assert.deepEqual(HOME_FAQ_SLUGS, [
+    'roller-door-backup-power',
     'roller-door-limit-adjustment-not-working',
     'roller-door-limit-adjustment',
-    'remote-copy-code-guide',
     'door-stuck',
     'motor-humming',
     'auto-rebound',

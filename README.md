@@ -105,6 +105,7 @@ FAQ 内容来自 `content/faq/*.md`。每篇文章使用 Markdown 编写，并�
 - `/faq/[slug]`：FAQ 详情页
 - `/faq/roller-door-limit-adjustment`：限位器调节实拍视频 FAQ
 - `/faq/roller-door-limit-adjustment-not-working`：限位调整无效与自动溜车诊断视频 FAQ
+- `/faq/roller-door-backup-power`：停电后储备电源快接开门视频 FAQ
 - `/services/remote-control-repair`：遥控器与控制器维修
 - `/services/motor-limit-repair`：电机与限位维修
 - `/services/roller-door-repair`：卷帘门维修

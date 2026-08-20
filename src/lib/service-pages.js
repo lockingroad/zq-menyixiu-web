@@ -10,7 +10,19 @@ export const SERVICE_PAGES = [
     directAnswer:
       '遥控器按了没反应，不一定是电机坏了。应先检查电池、遥控器指示灯、接收器供电和控制器状态；新遥控器还要核对频率、芯片及编码方式。能修复或重新配码的，不会直接建议整套更换。',
     published: '2026-08-04',
-    updated: '2026-08-11',
+    updated: '2026-08-20',
+    videoGuide: {
+      eyebrow: '停电应急实拍',
+      title: '停电了卷帘门怎么打开？',
+      description:
+        '用36秒实拍看清原主电源、控制器快接头、匹配储备电源和专用遥控的操作顺序与安全边界。',
+      href: '/faq/roller-door-backup-power',
+      linkText: '查看停电应急视频 FAQ',
+      image: {
+        src: '/images/faq/roller-door-backup-power/poster.jpg',
+        alt: '卷帘门停电后使用储备电源和专用遥控开门的实拍画面',
+      },
+    },
     heroImage: {
       src: '/images/faq/remote-copy-code-guide/poster.jpg',
       alt: '枣强门壹修演示卷帘门拷贝码遥控器按键对应关系',
@@ -23,6 +35,7 @@ export const SERVICE_PAGES = [
       '接收器无响应或控制距离明显变短',
       '控制器保险、继电器和线路故障排查',
       '旧遥控器丢失后的型号与方案判断',
+      '停电应急与储备电源匹配判断',
     ],
     symptoms: [
       {

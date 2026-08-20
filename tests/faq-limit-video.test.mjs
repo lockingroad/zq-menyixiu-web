@@ -52,8 +52,9 @@ test('精选限位视频 FAQ 置顶，且 sitemap 使用真实更新时间', () 
   const posts = getSortedPostsData();
   const route = getSiteRoutes().find((item) => item.path === '/faq/roller-door-limit-adjustment');
 
-  assert.equal(posts[0].slug, 'roller-door-limit-adjustment');
-  assert.equal(posts[1].slug, 'roller-door-limit-adjustment-not-working');
+  assert.equal(posts[0].slug, 'roller-door-backup-power');
+  assert.equal(posts[1].slug, 'roller-door-limit-adjustment');
+  assert.equal(posts[2].slug, 'roller-door-limit-adjustment-not-working');
   assert.equal(route.lastModified, '2026-08-04');
 });
 
