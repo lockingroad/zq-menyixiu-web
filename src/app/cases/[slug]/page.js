@@ -66,7 +66,8 @@ export default async function CaseDetailPage({ params }) {
         '@id': `${pageUrl}#article`,
         headline: repairCase.title,
         description: repairCase.desc,
-        datePublished: repairCase.date,
+        datePublished: repairCase.published || repairCase.date,
+        dateModified: repairCase.updated || repairCase.date,
         inLanguage: 'zh-CN',
         mainEntityOfPage: pageUrl,
         image: repairCase.images.map((image) => `${SITE_URL}${image.src}`),
@@ -173,6 +174,7 @@ export default async function CaseDetailPage({ params }) {
             height={2000}
             sizes="(min-width: 900px) 760px, 100vw"
             priority
+            style={repairCase.heroImageFit ? { objectFit: repairCase.heroImageFit, aspectRatio: '3 / 4', maxHeight: 640 } : undefined}
           />
           <figcaption>{repairCase.images[0].alt}</figcaption>
         </figure>
@@ -215,6 +217,7 @@ export default async function CaseDetailPage({ params }) {
                       width={896}
                       height={2000}
                       sizes="(min-width: 900px) 240px, (min-width: 600px) 33vw, 100vw"
+                      style={repairCase.heroImageFit ? { objectFit: repairCase.heroImageFit } : undefined}
                     />
                     <figcaption>{image.alt}</figcaption>
                   </figure>

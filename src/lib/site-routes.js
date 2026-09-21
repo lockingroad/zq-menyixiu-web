@@ -15,14 +15,14 @@ export function getSiteRoutes() {
     '2026-08-04',
   );
   const casesListUpdated = latestDate(
-    repairCases.map((repairCase) => repairCase.date),
+    repairCases.map((repairCase) => repairCase.updated || repairCase.date),
     '2026-07-26',
   );
 
   const staticRoutes = [
     {
       path: '/',
-      lastModified: '2026-08-20',
+      lastModified: latestDate([casesListUpdated, faqListUpdated, '2026-08-20']),
       priority: 1,
       changeFrequency: 'weekly',
     },
@@ -56,7 +56,7 @@ export function getSiteRoutes() {
 
   const caseRoutes = detailedRepairCases.map((repairCase) => ({
     path: `/cases/${repairCase.slug}`,
-    lastModified: repairCase.date,
+    lastModified: repairCase.updated || repairCase.date,
     priority: 0.7,
     changeFrequency: 'monthly',
   }));

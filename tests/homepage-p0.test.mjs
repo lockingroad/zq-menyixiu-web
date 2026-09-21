@@ -93,8 +93,8 @@ test('首页服务压缩为四组，精选案例只取两个有图详情案例',
   assert.deepEqual(
     featuredCases.map((item) => item.slug),
     [
+      'courtyard-sliding-gate-motor-repair',
       'xintiandi-underground-garage-tubular-motor',
-      'hualian-south-industrial-roller-door',
     ],
   );
 });

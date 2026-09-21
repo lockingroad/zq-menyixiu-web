@@ -44,6 +44,56 @@ export const douyinTopics = [
 // 文案按“故障现象 → 判断 → 处理”改写，方便客户阅读。
 // 地点命名规范与添加流程见：docs/添加维修案例说明.md（添加前须检索已有小区名，避免拆成多个导航项）
 export const repairCases = [
+  // —— 2026-08-23 ——
+  {
+    slug: 'courtyard-sliding-gate-motor-repair',
+    featured: true,
+    badges: ['新案例', '图文实拍'],
+    date: '2026-08-23',
+    published: '2026-09-21',
+    updated: '2026-09-21',
+    tag: '庭院平移门',
+    location: '枣强火车货站附近',
+    title: '庭院平移门电机内部珠子脱落，拆机修理并更换零件',
+    desc: '2026年8月23日，在枣强火车货站附近的一处农村私人住宅庭院，维修链条传动平移门。电机内部珠子脱落，现场拆开电机进行内部修理，并更换相关零件，完成本次电机维修。',
+    customerReportTitle: '农村住宅庭院平移门需要维修',
+    customerReport:
+      '这次维修的是农村私人住宅大院的平移门，地点位于枣强火车货站附近。客户的庭院门电机需要修理，门壹修上门处理，现场照片记录了门体、驱动电机与拆修过程。',
+    inspectionTitle: '电机内部珠子脱落，需要拆机处理',
+    inspection:
+      '本次维修发现电机内部有珠子脱落，处理重点在电机内部。拆开电机后，对相关内部零件进行修理和更换，解决此次内部零件脱落的问题。',
+    repairTitle: '拆开电机，修理内部并更换零件',
+    repairProcess:
+      '现场拆开平移门电机，针对内部珠子脱落的问题进行修理，并更换相关电机零件。本次采用维修原电机的方式处理，保留原有庭院平移门与链条传动结构。',
+    resultTitle: '完成原电机的内部维修',
+    result:
+      '本次完成了庭院平移门电机的拆修和零件更换。该门采用链条传动，是一种造价较低、适用于庭院大门的方案；选用时还需结合门体重量、开门空间及日常使用频率。',
+    galleryTitle: '庭院平移门电机拆修实拍',
+    heroImageFit: 'contain',
+    safetyTitle: '庭院平移门电机异常时怎么办？',
+    safetyText:
+      '发现电机异响、门体卡顿或内部零件脱落时，应停止反复启闭，断电后联系维修人员检查。检查和维修期间，让人员远离门体移动范围及链条传动部位，不要伸手触碰或强行推拉门体。',
+    serviceName: '枣强庭院平移门电机上门维修',
+    serviceType: '庭院平移门电机维修',
+    images: [
+      {
+        src: '/images/cases/courtyard-sliding-gate-motor-repair/onsite-repair.webp',
+        alt: '枣强火车货站附近农村住宅庭院，师傅现场拆修平移门电机',
+      },
+      {
+        src: '/images/cases/courtyard-sliding-gate-motor-repair/motor-opened.webp',
+        alt: '庭院平移门拆开外壳后的电机与内部结构',
+      },
+      {
+        src: '/images/cases/courtyard-sliding-gate-motor-repair/motor-and-drive.webp',
+        alt: '庭院平移门电机及门体旁的传动部位',
+      },
+      {
+        src: '/images/cases/courtyard-sliding-gate-motor-repair/gate-overview.webp',
+        alt: '农村私人住宅庭院平移门门体与地面轨道',
+      },
+    ],
+  },
   // —— 2026-07-20 ~ 07-26 ——
   {
     slug: 'xintiandi-underground-garage-tubular-motor',

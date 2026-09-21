@@ -46,7 +46,9 @@ test('图文案例在地点导航和案例列表中置顶', () => {
   assert.equal(featuredCase?.slug, xintiandiCaseSlug);
   assert.equal(featuredCase?.featured, true);
   assert.deepEqual(featuredCase?.badges, ['新案例', '图文实拍']);
-  assert.equal(groups[1]?.location, '枣强门市');
+  assert.equal(groups[1]?.location, '枣强火车货站附近');
+  assert.equal(groups[1]?.items[0]?.slug, 'courtyard-sliding-gate-motor-repair');
+  assert.equal(groups[2]?.location, '枣强门市');
 });
 
 test('新天地地下车库管状电机案例具备完整详情数据', () => {
