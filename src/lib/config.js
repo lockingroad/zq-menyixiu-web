@@ -75,6 +75,7 @@ export const repairCases = [
       '发现电机异响、门体卡顿或内部零件脱落时，应停止反复启闭，断电后联系维修人员检查。检查和维修期间，让人员远离门体移动范围及链条传动部位，不要伸手触碰或强行推拉门体。',
     serviceName: '枣强庭院平移门电机上门维修',
     serviceType: '庭院平移门电机维修',
+    douyinUrl: 'https://v.douyin.com/UBMXlEE39X8/',
     images: [
       {
         src: '/images/cases/courtyard-sliding-gate-motor-repair/onsite-repair.webp',
