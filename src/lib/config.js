@@ -44,6 +44,57 @@ export const douyinTopics = [
 // 文案按“故障现象 → 判断 → 处理”改写，方便客户阅读。
 // 地点命名规范与添加流程见：docs/添加维修案例说明.md（添加前须检索已有小区名，避免拆成多个导航项）
 export const repairCases = [
+  // —— 2026-08-29 ——
+  {
+    slug: 'zaoqiang-fourth-school-retractable-gate',
+    featured: true,
+    badges: ['新案例', '图文实拍'],
+    date: '2026-08-29',
+    published: '2026-10-12',
+    updated: '2026-10-12',
+    tag: '伸缩门',
+    location: '枣强第四中学',
+    title: '枣强第四中学伸缩门行走跑偏，更换电子元件修复',
+    desc: '枣强第四中学客户反映，伸缩门走不直线，使用过程中门体逐渐变歪。门壹修上门处理，更换相关电子元件后，修复了伸缩门行走跑偏的问题，恢复正常使用。',
+    customerReportTitle: '“走不直线，用着用着就变歪”',
+    customerReport:
+      '客户反馈学校伸缩门在使用过程中不能保持直线行走，开关门时逐渐出现偏斜。门体运行路线不稳定，影响校门日常使用，需要上门检查维修。',
+    inspectionTitle: '针对伸缩门行走跑偏进行检查',
+    inspection:
+      '现场围绕门体行走偏斜的问题进行检查，打开伸缩门机头，查看内部设备。本次维修针对相关电子元件进行处理，现场照片记录了机头内部与维修过程。',
+    repairTitle: '更换相关电子元件',
+    repairProcess:
+      '根据现场检查情况，更换伸缩门内的相关电子元件，处理运行中逐渐跑偏的问题。本次维修保留原有伸缩门门体，通过元件更换完成修复。',
+    resultTitle: '行走跑偏问题修复，恢复正常使用',
+    result:
+      '更换电子元件后，客户反馈的“走不直线、用着用着就变歪”问题得到解决，枣强第四中学伸缩门恢复正常使用。',
+    galleryTitle: '学校伸缩门与现场维修实拍',
+    heroImageFit: 'contain',
+    safetyTitle: '伸缩门行走跑偏时如何处理？',
+    safetyText:
+      '发现门体明显偏斜时，先停止运行，让行人与车辆避开门体移动范围。不要在通电运行时用手扶正门体或伸手进入机头；可记录跑偏现象，联系维修人员检查后再处理。',
+    serviceName: '枣强学校伸缩门上门维修',
+    serviceType: '伸缩门跑偏维修',
+    douyinUrl: 'https://v.douyin.com/bMj94kaUFO8/',
+    images: [
+      {
+        src: '/images/cases/zaoqiang-fourth-school-retractable-gate/gate-overview.webp',
+        alt: '枣强第四中学伸缩门门体与打开检修口的机头',
+      },
+      {
+        src: '/images/cases/zaoqiang-fourth-school-retractable-gate/onsite-repair.webp',
+        alt: '维修人员在枣强第四中学现场检修伸缩门机头内部设备',
+      },
+      {
+        src: '/images/cases/zaoqiang-fourth-school-retractable-gate/drive-compartment.webp',
+        alt: '打开检修口后可见的伸缩门内部设备',
+      },
+      {
+        src: '/images/cases/zaoqiang-fourth-school-retractable-gate/school-entrance.webp',
+        alt: '枣强第四中学校门处的伸缩门与现场环境',
+      },
+    ],
+  },
   // —— 2026-08-23 ——
   {
     slug: 'courtyard-sliding-gate-motor-repair',
