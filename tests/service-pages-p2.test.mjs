@@ -29,7 +29,11 @@ test('P2 提供三个独立且内容完整的服务页', () => {
     assert.ok(service.directAnswer.length > 60);
     assert.equal(
       service.updated,
-      service.slug === 'remote-control-repair' ? '2026-08-20' : '2026-08-04',
+      {
+        'remote-control-repair': '2026-08-20',
+        'motor-limit-repair': '2026-10-26',
+        'roller-door-repair': '2026-08-04',
+      }[service.slug],
     );
     assert.ok(service.scope.length >= 6);
     assert.ok(service.symptoms.length >= 3);
@@ -66,8 +70,8 @@ test('sitemap 使用内容更新时间且不同构建结果稳定', () => {
   assert.doesNotMatch(sitemapSource, /new Date\(\)/);
 
   const routeDates = Object.fromEntries(first.map((route) => [route.path, route.lastModified]));
-  assert.equal(routeDates['/'], '2026-10-12');
-  assert.equal(routeDates['/faq'], '2026-08-23');
+  assert.equal(routeDates['/'], '2026-10-26');
+  assert.equal(routeDates['/faq'], '2026-10-26');
   assert.equal(routeDates['/cases'], '2026-10-12');
 
   for (const service of SERVICE_PAGES) {

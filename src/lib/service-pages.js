@@ -100,7 +100,13 @@ export const SERVICE_PAGES = [
     directAnswer:
       '电机嗡响、无反应或行程不准，需要把供电、控制器、电容、刹车、门体负载和上下限位分开检查。限位跑偏可以调试；电容、线路或刹车故障可按实际情况维修；确认电机本体损坏后再更换。',
     published: '2026-08-04',
-    updated: '2026-08-04',
+    updated: '2026-10-26',
+    relatedFaqs: [
+      {
+        href: '/faq/roller-door-motor-brake-freezing',
+        label: '雪天电机闷响不转：刹车故障历史视频与停用说明',
+      },
+    ],
     videoGuide: {
       eyebrow: '故障诊断实拍',
       title: '限位调了没反应、位置乱跑或自动溜车怎么办？',

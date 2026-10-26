@@ -5,6 +5,7 @@ export const SERVICE_RESPONSE_TEXT = '通常约30分钟响应';
 export const SERVICE_RESPONSE_NOTE = '实际响应及到达时间以距离和当时工单为准';
 export const SERVICE_PROMISES = ['价格透明', '不修不收费'];
 export const HOME_FAQ_SLUGS = [
+  'roller-door-motor-brake-freezing',
   'roller-door-backup-power',
   'roller-door-limit-adjustment-not-working',
   'roller-door-limit-adjustment',

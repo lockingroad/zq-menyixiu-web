@@ -206,6 +206,15 @@ export default async function ServicePage({ params }) {
               <strong>{service.videoGuide.linkText} <span aria-hidden="true">→</span></strong>
             </div>
           </Link>
+          {service.relatedFaqs?.length > 0 && (
+            <nav className="container" aria-label="相关故障视频" style={{ marginTop: '24px' }}>
+              {service.relatedFaqs.map((faq) => (
+                <p key={faq.href}>
+                  <Link href={faq.href} style={{ color: 'var(--color-primary)' }}>{faq.label} →</Link>
+                </p>
+              ))}
+            </nav>
+          )}
         </section>
       )}
 

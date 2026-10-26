@@ -40,8 +40,9 @@ test('P0 品牌、响应口径与服务承诺由统一配置提供', () => {
   }
 });
 
-test('首页优先展示全部五篇实拍视频 FAQ，并保留三类高频故障入口', async () => {
+test('首页优先展示全部六篇实拍视频 FAQ，并保留三类高频故障入口', async () => {
   assert.deepEqual(HOME_FAQ_SLUGS, [
+    'roller-door-motor-brake-freezing',
     'roller-door-backup-power',
     'roller-door-limit-adjustment-not-working',
     'roller-door-limit-adjustment',
@@ -58,7 +59,7 @@ test('首页优先展示全部五篇实拍视频 FAQ，并保留三类高频故�
   }
 
   const homepageVideoPosts = await Promise.all(
-    HOME_FAQ_SLUGS.slice(0, 5).map((slug) => getPostData(slug)),
+    HOME_FAQ_SLUGS.slice(0, 6).map((slug) => getPostData(slug)),
   );
   assert.ok(homepageVideoPosts.every((post) => post.video?.src));
 
@@ -68,7 +69,7 @@ test('首页优先展示全部五篇实拍视频 FAQ，并保留三类高频故�
   const allPosts = await Promise.all(allFaqSlugs.map((slug) => getPostData(slug)));
   const allVideoSlugs = allPosts.filter((post) => post.video?.src).map((post) => post.slug);
 
-  assert.equal(allVideoSlugs.length, 5);
+  assert.equal(allVideoSlugs.length, 6);
   assert.ok(allVideoSlugs.every((slug) => HOME_FAQ_SLUGS.includes(slug)));
 
   const homeSource = readProjectFile('src/app/page.js');
