@@ -104,7 +104,7 @@ export const SERVICE_PAGES = [
     relatedFaqs: [
       {
         href: '/faq/roller-door-motor-brake-freezing',
-        label: '雪天电机闷响不转：刹车故障历史视频与停用说明',
+        label: '下雪后卷帘门只响不动，怎么办？',
       },
     ],
     videoGuide: {
