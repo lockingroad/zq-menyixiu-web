@@ -72,7 +72,7 @@ test('首页、控制器服务页和相关旧 FAQ 形成可抓取的双向入口
 
   assert.equal(posts[0].slug, 'roller-door-backup-power');
   assert.equal(service.videoGuide.href, '/faq/roller-door-backup-power');
-  assert.equal(service.updated, '2026-08-20');
+  assert.equal(service.updated, '2026-11-03');
   assert.equal(route.lastModified, '2026-08-20');
   assert.match(remoteFailureSource, /\/faq\/roller-door-backup-power/);
 });

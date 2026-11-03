@@ -10,7 +10,13 @@ export const SERVICE_PAGES = [
     directAnswer:
       '遥控器按了没反应，不一定是电机坏了。应先检查电池、遥控器指示灯、接收器供电和控制器状态；新遥控器还要核对频率、芯片及编码方式。能修复或重新配码的，不会直接建议整套更换。',
     published: '2026-08-04',
-    updated: '2026-08-20',
+    updated: '2026-11-03',
+    relatedFaqs: [
+      {
+        href: '/faq/roller-door-controller-plug-mistakes',
+        label: '卷帘门换控制器，插头怎么分正反？',
+      },
+    ],
     videoGuide: {
       eyebrow: '停电应急实拍',
       title: '停电了卷帘门怎么打开？',
