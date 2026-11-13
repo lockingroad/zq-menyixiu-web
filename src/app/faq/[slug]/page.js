@@ -239,11 +239,11 @@ export default async function Post({ params }) {
                   aria-label={video.title || `${postData.title}视频讲解`}
                 >
                   <source src={video.src} type={video.mimeType || 'video/mp4'} />
-                  您的浏览器暂不支持视频播放，可通过下方来源链接观看原视频。
+                  您的浏览器暂不支持视频播放，可<a href={video.src}>直接打开视频文件</a>观看。
                 </video>
               </div>
               <div className="faq-video-info">
-                <p className="section-kicker">实拍视频 · {video.durationLabel || '现场讲解'}</p>
+                <p className="section-kicker">{video.label || '实拍视频'} · {video.durationLabel || '现场讲解'}</p>
                 <h2 id="faq-video-title">{video.title || postData.title}</h2>
                 <p>{video.description || '先看完整演示，再结合下方文字步骤确认故障现象和处理边界。'}</p>
                 {postData.performance && (

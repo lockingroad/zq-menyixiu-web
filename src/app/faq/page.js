@@ -49,7 +49,7 @@ export default function FAQList() {
             <Link href={`/faq/${slug}`} key={slug} className="article-card">
               <div className="article-card-tags">
                 <span className="article-tag">🔖 {tag}</span>
-                {video && <span className="article-video-tag">实拍视频</span>}
+                {video && <span className="article-video-tag">{video.label || '实拍视频'}</span>}
                 {featured && <span className="article-featured-tag">精选</span>}
               </div>
               <h3>{title}</h3>

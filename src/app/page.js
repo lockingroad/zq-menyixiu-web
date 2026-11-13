@@ -106,7 +106,7 @@ export default function Home() {
                 <div>
                   <div className="home-faq-title-row">
                     <h3>{title}</h3>
-                    {video && <span className="home-faq-video-tag">实拍视频</span>}
+                    {video && <span className="home-faq-video-tag">{video.label || '实拍视频'}</span>}
                   </div>
                   <p>{excerpt}</p>
                 </div>

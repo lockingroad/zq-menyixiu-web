@@ -40,7 +40,7 @@ test('控制器误插说明包含断电、兼容性和停止试电的边界', as
 });
 
 test('首页、控制器服务页与相关旧FAQ提供入口，站点地图日期同步', async () => {
-  assert.equal(HOME_FAQ_SLUGS[0], slug);
+  assert.ok(HOME_FAQ_SLUGS.includes(slug));
   const service = getServicePageBySlug('remote-control-repair');
   assert.ok(service.relatedFaqs.some(faq => faq.href === `/faq/${slug}`));
   const previous = await getPostData('remote-failure');
@@ -49,7 +49,8 @@ test('首页、控制器服务页与相关旧FAQ提供入口，站点地图日�
   assert.equal(post.relatedService.href, '/services/remote-control-repair');
   assert.match(post.contentHtml, /\/faq\/remote-failure/);
   const routes = getSiteRoutes();
-  for (const path of [`/faq/${slug}`, '/faq/remote-failure', '/services/remote-control-repair', '/', '/faq']) {
-    assert.equal(routes.find(route => route.path === path).lastModified, '2026-11-03');
+  assert.equal(routes.find(route => route.path === `/faq/${slug}`).lastModified, '2026-11-03');
+  for (const path of ['/faq/remote-failure', '/services/remote-control-repair', '/', '/faq']) {
+    assert.equal(routes.find(route => route.path === path).lastModified, '2026-11-13');
   }
 });
