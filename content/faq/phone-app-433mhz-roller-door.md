@@ -8,6 +8,7 @@ directAnswer: "如果卷帘门使用普通433MHz遥控器，而手机没有匹�
 readTime: "2分钟"
 featured: true
 featuredOrder: 8
+sourceUrl: "https://v.douyin.com/HYqCegsU89Q/"
 video:
   src: "/videos/faq/phone-app-433mhz-roller-door.mp4"
   label: "原理讲解"
@@ -66,4 +67,4 @@ Android 的[红外接口](https://developer.android.com/reference/android/hardwa
 
 拿不准时，先拍下现有遥控器与控制器型号，让师傅确认。不要仅凭APP名称购买设备，也不要自行短接线路或取消门体安全保护。若只是原遥控器失灵，可先看[遥控器没反应的常见原因](/faq/remote-failure)。
 
-视频由枣强门壹修提供，页面日期为本站整理日期。
+视频由枣强门壹修提供，原片见上方抖音链接。页面日期为本站整理日期。

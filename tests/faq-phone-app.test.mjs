@@ -13,7 +13,7 @@ test('手机APP视频提供可播放资源，不虚构平台来源与表现数�
   const post = await getPostData(slug);
   assert.equal(post.date, '2026-11-13');
   assert.equal(post.video.uploadDate, '2026-11-13T00:00:00+08:00');
-  assert.equal(post.sourceUrl, null);
+  assert.equal(post.sourceUrl, 'https://v.douyin.com/HYqCegsU89Q/');
   assert.equal(post.performance, null);
   assert.equal(post.video.label, '原理讲解');
   assert.equal(getSortedPostsData().find(post => post.slug === slug).video.label, '原理讲解');
