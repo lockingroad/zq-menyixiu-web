@@ -77,7 +77,7 @@ export default function Home() {
             <span>本地师傅快速响应</span>
           </h1>
           <p className="hero-summary">
-            刘金灿师傅从业20年，服务枣强县城及大营、恩察、马屯、王常等周边乡镇。
+            刘金灿师傅从业20年，以枣强县城及大营、恩察、马屯、王常等乡镇为主；衡水市区、桃城、冀州区及周边县也可上门。
           </p>
           <p className="hero-promise">{heroPromises}</p>
           <p className="hero-note">{SERVICE_RESPONSE_NOTE}。</p>

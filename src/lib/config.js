@@ -743,6 +743,9 @@ export function groupRepairCasesByLocation(cases) {
     );
 }
 
+// 页脚「服务覆盖」在县内乡镇之外单独列出，避免被写成「枣强县 + 衡水市区」
+export const extraServiceAreas = ['衡水市区', '冀州区', '桃城区'];
+
 export const serviceAreas = [
   '枣强县城',
   '大营镇',

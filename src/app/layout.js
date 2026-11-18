@@ -14,9 +14,11 @@ import {
   services,
 } from '@/lib/config';
 
+const WIDER_SERVICE_AREAS = ['衡水市区', '桃城区', '冀州区', '衡水周边县'];
+
 const SITE_URL = 'https://menyixiu.cn';
 const SERVICE_PROMISE_TEXT = SERVICE_PROMISES.join('、');
-const SITE_DESCRIPTION = `${BRAND_NAME}由刘金灿师傅提供卷帘门、工业卷帘门、伸缩门、道闸、防盗门、智能锁和门禁上门安装维修。${SERVICE_RESPONSE_TEXT}，${SERVICE_RESPONSE_NOTE}；${SERVICE_PROMISE_TEXT}。`;
+const SITE_DESCRIPTION = `${BRAND_NAME}由刘金灿师傅提供卷帘门、工业卷帘门、伸缩门、道闸、防盗门、智能锁和门禁上门安装维修。以枣强县城及县内乡镇为主，衡水市区、桃城、冀州区及周边县也可上门。${SERVICE_RESPONSE_TEXT}，${SERVICE_RESPONSE_NOTE}；${SERVICE_PROMISE_TEXT}。`;
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -62,7 +64,7 @@ const localBusinessJsonLd = {
     addressRegion: '河北省衡水市',
     addressLocality: '枣强县',
   },
-  areaServed: serviceAreas.map((area) => ({ '@type': 'City', name: area })),
+  areaServed: [...serviceAreas, ...WIDER_SERVICE_AREAS].map((area) => ({ '@type': 'City', name: area })),
   knowsAbout: services.map((s) => s.title),
   // 服务清单，便于 AI 识别可提供的上门项目
   makesOffer: services.map((s) => ({
@@ -71,7 +73,7 @@ const localBusinessJsonLd = {
       '@type': 'Service',
       name: s.title,
       description: s.desc,
-      areaServed: '河北省衡水市枣强县',
+      areaServed: '以河北省衡水市枣强县为主，衡水市区、桃城区、冀州区及衡水周边县也可上门',
       provider: { '@id': `${SITE_URL}/#business` },
     },
   })),

@@ -5,6 +5,7 @@ import {
   SERVICE_PROMISES,
   SERVICE_RESPONSE_NOTE,
   SERVICE_RESPONSE_TEXT,
+  extraServiceAreas,
   serviceAreas,
 } from '@/lib/config';
 import { SERVICE_PAGE_LINKS } from '@/lib/service-pages';
@@ -43,7 +44,7 @@ export default function Footer() {
           <div className="footer-section">
             <h4>服务覆盖</h4>
             <div className="footer-area-tags">
-              {serviceAreas.map((area, i) => (
+              {[...extraServiceAreas, ...serviceAreas].map((area, i) => (
                 <span className="footer-area-tag" key={i}>
                   {area}
                 </span>
