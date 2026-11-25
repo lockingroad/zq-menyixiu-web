@@ -4,18 +4,20 @@
 
 ## 项目
 
-枣强卷帘门维修（"枣强门壹修"）—— 本地维修服务展示站，覆盖卷帘门、伸缩门、道闸杆、防盗门等安装维修业务，位于枣强。技术栈为 **Next.js 16（App Router）+ React 19**、原生 CSS、Markdown 驱动内容。无 TypeScript、无 ESLint、无测试框架。
+枣强门壹修的本地服务展示站，覆盖卷帘门、伸缩门、道闸杆、防盗门等安装维修业务。技术栈为 **Next.js 16（App Router）+ React 19**、原生 CSS、Markdown 驱动内容，测试使用 Node 内置测试运行器。
 
 ## 常用命令
 
 ```bash
 npm install      # 安装依赖
 npm run dev      # 开发服务器 http://localhost:3000
+npm test         # 内容、媒体、案例与路由测试
 npm run build    # 生产构建
+npm run indexnow:dry  # 预览规范 URL
 npm run start    # 运行生产构建
 ```
 
-无 lint / test 脚本。验证改动请运行 `npm run build`（导入缺失或路由错误会导致构建失败）。
+以上命令在网站仓库根目录运行。脚本定义见 [package.json](package.json)。
 
 ## 架构
 
@@ -38,4 +40,4 @@ npm run start    # 运行生产构建
 
 - 所有面向用户的文案均为简体中文——写文案时请保持一致。
 - 服务项与 FAQ 标签有意使用 emoji 图标（见 `config.js`）；README 已注明 Footer/按钮上的深色背景 emoji 表现被刻意移除，请勿重新引入。
-- SEO / 验证元数据（百度验证码、页面标题、keywords）位于 `src/app/layout.js` 及各页 `generateMetadata`。`public/` 下手动维护 `robots.txt` 与 `sitemap.xml`。
+- SEO / 验证元数据位于 `src/app/layout.js` 及各页 `generateMetadata`。爬虫规则维护在 `public/robots.txt`。`/sitemap.xml` 由 [sitemap.js](src/app/sitemap.js) 根据[站点路由](src/lib/site-routes.js)和内容日期生成。

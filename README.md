@@ -29,9 +29,10 @@ npm run dev
 http://localhost:3000
 ```
 
-构建生产版本：
+运行内容测试并构建生产版本：
 
 ```bash
+npm test
 npm run build
 ```
 
@@ -49,19 +50,22 @@ npm run start
 │   └── faq/                  # FAQ Markdown 内容
 ├── public/
 │   ├── images/               # 站点图片素材
-│   ├── robots.txt
-│   └── sitemap.xml
+│   ├── videos/               # FAQ 播放版
+│   └── robots.txt
 ├── src/
 │   ├── app/
 │   │   ├── faq/
 │   │   │   ├── [slug]/page.js
 │   │   │   └── page.js
+│   │   ├── sitemap.js        # 从站点路由生成 /sitemap.xml
 │   │   ├── layout.js
 │   │   └── page.js           # 首页
 │   ├── components/           # Header / Footer / 回顶等公共组件
 │   ├── lib/
 │   │   ├── config.js         # 电话、服务项、抖音信息、案例配置
-│   │   └── markdown.js       # FAQ 读取与渲染
+│   │   ├── markdown.js       # FAQ 读取与渲染
+│   │   ├── service-pages.js  # 服务详情与 FAQ 关联
+│   │   └── site-routes.js    # sitemap 与 IndexNow 共用的路由
 │   └── index.css             # 全局样式与设计 token
 ├── next.config.js
 ├── package.json
@@ -81,6 +85,8 @@ npm run start
 - 首页“近期真实维修案例”
 
 首页结构本身位于 `src/app/page.js`。
+
+新增真实维修记录时按[添加维修案例说明](docs/添加维修案例说明.md)核对地点、图片及公开字段。
 
 ### 2. 修改 FAQ 知识库
 
