@@ -47,7 +47,7 @@ test('首页、服务页和旧FAQ提供入口，站点地图反映本次发布�
   assert.equal(post.relatedService.href, '/services/remote-control-repair');
   assert.match(post.contentHtml, /\/faq\/remote-failure/);
   const routes = getSiteRoutes();
-  for (const path of [`/faq/${slug}`, '/faq/remote-failure', '/services/remote-control-repair', '/', '/faq']) {
+  for (const path of [`/faq/${slug}`, '/faq/remote-failure', '/services/remote-control-repair']) {
     assert.equal(routes.find(route => route.path === path).lastModified, '2026-11-13');
   }
 });

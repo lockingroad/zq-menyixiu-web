@@ -110,8 +110,12 @@ export const SERVICE_PAGES = [
     directAnswer:
       '电机嗡响、无反应或行程不准，需要把供电、控制器、电容、刹车、门体负载和上下限位分开检查。限位跑偏可以调试；电容、线路或刹车故障可按实际情况维修；确认电机本体损坏后再更换。',
     published: '2026-08-04',
-    updated: '2026-10-26',
+    updated: '2026-11-26',
     relatedFaqs: [
+      {
+        href: '/faq/roller-door-obstacle-motor-spinning',
+        label: '卷帘门顶住车后，电机还在转、门却不动怎么办？',
+      },
       {
         href: '/faq/roller-door-motor-brake-freezing',
         label: '下雪后卷帘门只响不动，怎么办？',

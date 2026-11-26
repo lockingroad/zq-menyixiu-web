@@ -40,9 +40,10 @@ test('P0 品牌、响应口径与服务承诺由统一配置提供', () => {
   }
 });
 
-test('首页优先展示全部八篇视频 FAQ，并保留三类高频故障入口', async () => {
+test('首页优先展示全部九篇视频 FAQ，并保留三类高频故障入口', async () => {
   assert.deepEqual(HOME_FAQ_SLUGS, [
     'phone-app-433mhz-roller-door',
+    'roller-door-obstacle-motor-spinning',
     'roller-door-controller-plug-mistakes',
     'roller-door-motor-brake-freezing',
     'roller-door-backup-power',
@@ -61,7 +62,7 @@ test('首页优先展示全部八篇视频 FAQ，并保留三类高频故障入�
   }
 
   const homepageVideoPosts = await Promise.all(
-    HOME_FAQ_SLUGS.slice(0, 8).map((slug) => getPostData(slug)),
+    HOME_FAQ_SLUGS.slice(0, 9).map((slug) => getPostData(slug)),
   );
   assert.ok(homepageVideoPosts.every((post) => post.video?.src));
 
@@ -71,7 +72,7 @@ test('首页优先展示全部八篇视频 FAQ，并保留三类高频故障入�
   const allPosts = await Promise.all(allFaqSlugs.map((slug) => getPostData(slug)));
   const allVideoSlugs = allPosts.filter((post) => post.video?.src).map((post) => post.slug);
 
-  assert.equal(allVideoSlugs.length, 8);
+  assert.equal(allVideoSlugs.length, 9);
   assert.ok(allVideoSlugs.every((slug) => HOME_FAQ_SLUGS.includes(slug)));
 
   const homeSource = readProjectFile('src/app/page.js');

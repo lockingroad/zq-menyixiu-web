@@ -35,7 +35,8 @@ test('电机服务与旧FAQ链接到新视频，sitemap反映更新日期', () =
   const previous = readFileSync(new URL('../content/faq/motor-humming.md', import.meta.url), 'utf8');
   assert.ok(previous.includes(`/faq/${slug}`));
   const routes = getSiteRoutes();
-  for (const path of [`/faq/${slug}`, '/faq/motor-humming', '/services/motor-limit-repair']) {
+  assert.equal(routes.find(route => route.path === '/services/motor-limit-repair').lastModified, service.updated);
+  for (const path of [`/faq/${slug}`, '/faq/motor-humming']) {
     assert.equal(routes.find(route => route.path === path).lastModified, '2026-10-26');
   }
 });

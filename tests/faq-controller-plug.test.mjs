@@ -50,7 +50,7 @@ test('首页、控制器服务页与相关旧FAQ提供入口，站点地图日�
   assert.match(post.contentHtml, /\/faq\/remote-failure/);
   const routes = getSiteRoutes();
   assert.equal(routes.find(route => route.path === `/faq/${slug}`).lastModified, '2026-11-03');
-  for (const path of ['/faq/remote-failure', '/services/remote-control-repair', '/', '/faq']) {
+  for (const path of ['/faq/remote-failure', '/services/remote-control-repair']) {
     assert.equal(routes.find(route => route.path === path).lastModified, '2026-11-13');
   }
 });
